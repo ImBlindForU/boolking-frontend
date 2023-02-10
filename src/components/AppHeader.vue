@@ -112,7 +112,7 @@ header {
     transition: 500ms;
     backdrop-filter: blur(10px);
     height: 40px;
-    box-shadow: 1px 1px 5px rgb(18, 1, 1);
+    box-shadow: 1px 1px 5px rgb(193, 185, 185);
 
     &:hover {
       background-color: $white;
