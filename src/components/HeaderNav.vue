@@ -17,7 +17,7 @@ export default {
 @use "../styles/partials/variables" as *;
 
 li {
-//   text-transform: uppercase;
+  text-transform: uppercase;
   color: $red;
   font-weight: light;
   font-size: 0.7rem;
