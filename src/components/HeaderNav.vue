@@ -10,7 +10,7 @@ export default {
 
 <template>
   <li>
-    <a :href="NavItems.link">{{ NavItems.name }}</a>
+    <a :href="NavItems.link">{{ NavItems.label }}</a>
   </li>
 </template>
 <style lang="scss" scoped>

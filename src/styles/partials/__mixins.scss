@@ -1,0 +1,13 @@
+@mixin my-container {
+  width: 85%;
+  margin: 0 auto;
+}
+@mixin my-container-fluid{
+  width: 100%;
+}
+@mixin my-flex($direction, $justify) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: center;
+}

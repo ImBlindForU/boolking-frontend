@@ -10,37 +10,37 @@ export default {
     return {
       navHeaderList: [
         {
-          name: "home",
+          label: "home",
           link: "/home",
         },
         {
-          name: "pages",
+          label: "pages",
           link: "/pages",
         },
         {
-          name: "program",
+          label: "program",
           link: "/programs",
         },
         {
-          name: "tickets",
-          link: "/tickets",
+          label: "Home",
+          routeName: "/",
+          active: false,
         },
         {
-          name: "speakers",
-          link: "/speakers",
+          label: "Projects",
+          routeName: "/estates",
+          active: false,
         },
         {
-          name: "papers",
-          link: "/papers",
+          label: "About",
+          routeName: "/about",
+          active: false,
         },
         {
-          name: "blog",
-          link: "/blog",
-        },
-        {
-          name: "shortcodes",
-          link: "/shortcodes",
-        },
+          label: "Contact us",
+          routeName: "/contact-us",
+          active: false
+        }
       ],
       scrollPosition: null,
       hamMenu: false,
@@ -165,7 +165,7 @@ header {
         position: relative;
         cursor: pointer;
       }
-      i {
+      li:last-child {
         font-size: 1rem;
         color: $gray;
         transition: 300ms;

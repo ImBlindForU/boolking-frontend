@@ -17,14 +17,17 @@ export default {
 
 <template>
   <AppHeader></AppHeader>
-  <main></main>
-  yo
+  <main>
+    
+    <router-view></router-view>
+
+  </main>
 </template>
 
 <style lang="scss">
 @use "./styles/general.scss" as *;
 @use "./styles/partials/variables" as *;
 main{
-  height: 200vmin;
+  padding: 70px 0 0 0;
 }
 </style>
