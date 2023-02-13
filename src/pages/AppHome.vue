@@ -7,7 +7,7 @@ export default {
   data() {
     return {
       BackEndUrl: "",
-      welcome: false,
+      welcome: true,
     
     };
   },
@@ -33,9 +33,10 @@ export default {
 
 .my-container-fluid {
   @include my-container-fluid;
-  padding-top: 10em;
+  padding-top: 1em;
   color: black;
-  background: #000;
+  // background: #000;
+  height: 100%;
 
   h1 {
     color: $red;

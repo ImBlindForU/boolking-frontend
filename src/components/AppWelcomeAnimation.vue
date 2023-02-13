@@ -25,6 +25,8 @@ export default {
     };
   },
   created() {
+
+
   },
   mounted(){
 
@@ -48,8 +50,12 @@ export default {
                     .from(".niagara",{ y: '-900%',ease: "ease.Out", stagger: .2})
                     .to("#welcome", { alpha: 0, opacity: 1, ease: "ease.Out", delay: 1})
                     .to("#welcome", { display: "none"})
+                    console.log("fine");
             // setInterval( this.loading = !this.loading && console.log(2), 3000) ;   
-
+                  // console.log(timeline);
+                  // if (timeline) {
+                    
+                  // }
     }
 
   },
@@ -58,7 +64,7 @@ export default {
 <template>
     <div ref="welcome" id="welcome">
       <div class="container" ref="welcomeElement">
-
+        
         <div id="content" >
           <h1>BoolKing</h1>
           <div>

@@ -29,5 +29,6 @@ export default {
 @use "./styles/partials/variables" as *;
 main{
   padding: 70px 0 0 0;
+  height: 100vw;
 }
 </style>
