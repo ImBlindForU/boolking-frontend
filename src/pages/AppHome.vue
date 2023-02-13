@@ -8,10 +8,12 @@ export default {
   components: { AppWelcomeAnimation, EstateCard },
   data() {
     return {
-      // BackEndUrl: "http://127.0.0.1:8000/api/estates",
       welcome: true,
-      store
-    
+      store,
+      services: [],
+      street: "",
+      city: '',
+      distance: 20
     };
   },
   created() {
@@ -25,7 +27,24 @@ export default {
   methods: {
 
     getAllEstates(){
-      axios.get(this.store.backEndURL ).then(res => {
+
+      const option = {
+                params: {
+                  distance: this.distance,
+                  ...this.services && {services: this.services}
+                }
+            }
+
+      if(this.street){
+        option.params.street = this.street
+      }
+
+      if(this.city){
+        option.params.city = this.city
+      }
+
+
+      axios.get(this.store.backEndURL, option).then(res => {
         console.log(res.data.results);
         this.store.allEstates = res.data.results;
       })
