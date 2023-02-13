@@ -10,8 +10,10 @@ export default {
 
 <template>
   <li>
-    <a :href="NavItems.link">{{ NavItems.label }}</a>
+    <router-link :to="NavItems.routeName">{{ NavItems.label }}</router-link>
   </li>
+
+  
 </template>
 <style lang="scss" scoped>
 @use "../styles/partials/variables" as *;

@@ -36,6 +36,7 @@ export default {
 <template>
     <AppWelcomeAnimation v-if="!welcome"></AppWelcomeAnimation>
   <div class="my-container-fluid">
+    
     <h1>Tutti i nostri alloggi</h1>
 
     <div class="container">

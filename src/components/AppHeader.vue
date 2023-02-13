@@ -12,19 +12,14 @@ export default {
         {
           label: "home",
           link: "/home",
-        },
-        {
-          label: "pages",
-          link: "/pages",
+          routeName: "/",
+
         },
         {
           label: "program",
           link: "/programs",
-        },
-        {
-          label: "Home",
-          routeName: "/",
-          active: false,
+          routeName: "/estates",
+
         },
         {
           label: "Projects",
@@ -36,11 +31,17 @@ export default {
           routeName: "/about",
           active: false,
         },
-        {
-          label: "Contact us",
-          routeName: "/contact-us",
-          active: false
-        }
+        // {
+        //   label: "Login",
+        //   routeName: "http://127.0.0.1:8000/login",
+        //   active: false
+        // },
+        // {
+        //   label: "Registrati",
+        //   routeName: "http://127.0.0.1:8000/register",
+        //   active: false
+        // }
+
       ],
       scrollPosition: null,
       hamMenu: false,
@@ -73,11 +74,15 @@ export default {
             v-for="(item, index) in navHeaderList"
             :key="index"
             :NavItems="item"
+            
           >
           </HeaderNav>
           |
-          <li class="lens">
-            <i class="fa-solid fa-magnifying-glass"></i>
+          <li class="external">
+            <a href="http://127.0.0.1:8000/login">Login</a>
+          </li>
+          <li class="external">
+            <a href="http://127.0.0.1:8000/register">Registrati</a>
           </li>
         </ul>
       </nav>
@@ -89,6 +94,12 @@ export default {
             :key="index"
             :NavItems="item"
           ></HeaderNav>
+          <li class="external">
+            <a href="http://127.0.0.1:8000/login">Login</a>
+          </li>
+          <li class="external">
+            <a href="http://127.0.0.1:8000/register">Registrati</a>
+          </li>
         </ul>
       </div>
     </div>
@@ -165,15 +176,13 @@ header {
         position: relative;
         cursor: pointer;
       }
-      li:last-child {
-        font-size: 1rem;
+      .external {
+        // font-size: .9rem;
         color: $gray;
-        transition: 300ms;
-
-        &:hover {
-          transform: scale(1.1);
-          transition: 300ms;
-        }
+        text-transform: uppercase;
+  font-weight: light;
+  font-size: 0.7rem;
+       
       }
     }
   }
