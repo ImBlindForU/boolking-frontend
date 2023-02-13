@@ -15,7 +15,9 @@ export default {
   computed: {
   },
   methods: {   
-   
+    getImgPath(imgName){
+            return new URL(`./${imgName}.png`, import.meta.url).href
+        }
   },
   mounted(){
 
@@ -40,7 +42,7 @@ export default {
 <template>
  <div  v-if="estate.is_visible" class="estate-card ">
         <div class="estate-img">
-            <img :src="`http://127.0.0.1:8000/storage/${estate.cover_img}`" alt="" srcset="">
+            <img  :src="`http://127.0.0.1:8000/storage/${estate.cover_img}`" alt="" srcset="">
         </div>
         <div class="estate-txt">
             <div>
