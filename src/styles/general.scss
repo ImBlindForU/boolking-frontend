@@ -55,3 +55,48 @@ button {
     width: 95%;
   }
 }
+
+.our-btn-header{
+  transition: all 300ms;
+  border-radius: 10px;
+  
+  color: white;
+  background-color: #ff5a60;
+  &:hover{
+      color: #ff5a60;
+      background-color: white;
+      transition: all 300ms;
+      }
+}
+
+.our-btn{
+  transition: all 300ms;
+  border-radius: 10px;
+  color: #ff5a60;
+  background-color: white;
+  
+  &:hover{
+      color: white;
+      background-color: #ff5a60;
+      transition: all 300ms;
+      }
+}
+
+
+i{
+  transition: 300ms;
+
+  &:hover{
+      transform: scale(1.3);
+      transition: 300ms;
+
+  }
+}
+
+
+
+.form-control:focus{
+  border: 1px solid #ff5a60 !important;
+  transition: all 200ms;
+  box-shadow: 0 0 0 0.05rem #ff5a60;
+}
