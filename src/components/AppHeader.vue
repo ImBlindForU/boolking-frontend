@@ -209,8 +209,8 @@ header {
           position: absolute;
           top: 40px;
           right: -10px;
-          width: 50vw;
-          min-width: 130px;
+          width: 40vw;
+          min-width: 150px;
           display: flex;
           border-left: 5px solid $red;
           flex-direction: column;
