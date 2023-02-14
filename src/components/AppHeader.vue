@@ -180,8 +180,8 @@ header {
         // font-size: .9rem;
         color: $gray;
         text-transform: uppercase;
-  font-weight: light;
-  font-size: 0.7rem;
+        font-weight: light;
+        font-size: 0.7rem;
        
       }
     }
@@ -208,19 +208,31 @@ header {
         ul {
           position: absolute;
           top: 40px;
-          left: -70px;
+          right: -10px;
+          width: 50vw;
+          min-width: 130px;
           display: flex;
+          border-left: 5px solid $red;
           flex-direction: column;
           background-color: rgba(255, 255, 255, 0.594);
-          padding: 1em 0.5em;
+          padding: 2em 1em;
           align-items: flex-start;
           border-radius: 5px;
-          transition: 500ms;
+          transition: 200ms;
           backdrop-filter: blur(10px);
 
           &:hover {
             background-color: $white;
           }
+          li{
+            transition: all 300ms;
+
+          }
+          li:hover{
+            transform: translateX(10px);
+            transition: all 300ms;
+          }
+          
         }
       }
     }
