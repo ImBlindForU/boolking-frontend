@@ -215,7 +215,7 @@ header {
           border-left: 5px solid $red;
           flex-direction: column;
           background-color: rgba(255, 255, 255, 0.594);
-          padding: 2em 1em;
+          padding: 1.5em 1em;
           align-items: flex-start;
           border-radius: 5px;
           transition: 200ms;
@@ -226,11 +226,16 @@ header {
           }
           li{
             transition: all 300ms;
+            font-size: .9rem;
+            padding: .5em;
+           
 
           }
           li:hover{
             transform: translateX(10px);
             transition: all 300ms;
+            border-radius: 0  10px;
+            
           }
           
         }
