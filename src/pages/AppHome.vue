@@ -77,6 +77,7 @@ export default {
   padding-top: 1em;
   color: black;
   height: 100%;
+  
 
   h1 {
     color: $red;
