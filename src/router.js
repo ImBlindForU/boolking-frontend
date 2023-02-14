@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import AppHome from "./pages/AppHome.vue";
+import AdvancedSearch from "./pages/AdvancedSearch.vue"
 // import About from "./pages/About.vue";
 // import ProjectsList from "./pages/ProjectsList.vue";
 // import SingleProject from "./pages/SingleProject.vue";
@@ -15,6 +16,12 @@ const router = createRouter({
             path: "/",
             name: "home",
             component: AppHome
+
+        },
+        {
+            path: "/advancedSearch",
+            name: "Advanced Search",
+            component: AdvancedSearch
 
         },
         {

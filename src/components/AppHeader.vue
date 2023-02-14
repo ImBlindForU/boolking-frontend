@@ -16,16 +16,16 @@ export default {
 
         },
         {
-          label: "program",
-          link: "/programs",
-          routeName: "/estates",
+          label: "Ricerca",
+          link: "/advancedSearch",
+          routeName: "/advancedSearch",
 
         },
-        {
-          label: "Projects",
-          routeName: "/estates",
-          active: false,
-        },
+        // {
+        //   label: "Projects",
+        //   routeName: "/estates",
+        //   active: false,
+        // },
         {
           label: "About",
           routeName: "/about",

@@ -13,7 +13,7 @@ export default {
       services: [],
       street: "",
       city: '',
-      distance: 20
+      distance: null
     };
   },
   created() {
