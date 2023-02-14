@@ -96,7 +96,7 @@ export default {
 
   .cards-container{
     @include my-container;
-    @include my-flex(row, center);
+    @include my-flex(row, start);
     flex-wrap: wrap;
    gap: 1em .5em;
       
