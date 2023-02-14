@@ -78,25 +78,27 @@ export default {
                 zoom: 5
             });
 
-           
+            this.store.allEstates.forEach(estate => {
+                this.createMarker([estate.address.long, estate.address.lat], "white", estate.title )
+            });
 
 
            
 
         },
-        createMarker(icon, position, color, popupText) {
+        createMarker(position, color, popupText) {
             var markerElement = document.createElement('div');
             markerElement.className = 'marker';
 
             var markerContentElement = document.createElement('div');
             markerContentElement.className = 'marker-content';
-            // markerContentElement.style.backgroundColor = color;
+            markerContentElement.style.backgroundColor = color;
             markerElement.appendChild(markerContentElement);
 
             var iconElement = document.createElement('div');
             iconElement.className = 'marker-icon';
             iconElement.style.backgroundImage =
-                'url(../assets/' + icon + ')';
+                'url(../assets/' + 'marker.png' + ')';
             markerContentElement.appendChild(iconElement);
 
             var popup = new tt.Popup({offset: 30}).setText(popupText);
