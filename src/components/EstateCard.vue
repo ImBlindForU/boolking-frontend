@@ -73,6 +73,7 @@ export default {
                height: 200px;
                    max-width: 100%;
                    object-fit: cover;
+                   object-position: center;
                }
            }
    
