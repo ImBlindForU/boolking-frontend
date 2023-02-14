@@ -57,6 +57,7 @@ export default {
 
 <style lang="scss" scoped>
  .estate-card{
+  height: 300px;
            border: 1px solid #c1baba;
            border-radius: 15px;
            overflow: hidden;
@@ -69,6 +70,7 @@ export default {
                width: 100%;
                img{
                width: 100%;
+               height: 200px;
                    max-width: 100%;
                    object-fit: cover;
                }

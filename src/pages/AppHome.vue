@@ -11,7 +11,7 @@ export default {
       welcome: true,
       store,
       services: [],
-      street: "Roma",
+      street: "",
       city: '',
       distance: 20
     };
