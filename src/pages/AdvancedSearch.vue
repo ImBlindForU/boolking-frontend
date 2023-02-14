@@ -79,8 +79,10 @@ export default {
             });
 
             this.store.allEstates.forEach(estate => {
-                this.createMarker([estate.address.long, estate.address.lat], "white", estate.title )
+                this.createMarker([estate.address.long, estate.address.lat], "white", estate.title );
+                console.log(estate.title);
             });
+            console.log(this.store.allEstates);
 
 
            
