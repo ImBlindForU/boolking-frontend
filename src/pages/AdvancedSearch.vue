@@ -12,6 +12,7 @@ export default {
   data() {
     return {
       store,
+      allEstates: [],
       filteredServices: [],
       filteredStreet: "",
       filteredCity: '',
@@ -28,7 +29,8 @@ export default {
       
     },
     mounted(){
-      this.initializeMap()
+        // this.initializeMap()
+        // this.addMarker()
     
   },
   methods: {
@@ -58,6 +60,9 @@ export default {
       axios.get(this.store.backEndURL, option).then(res => {
         console.log(res.data.results);
         this.store.allEstates = res.data.results;
+        this.allEstates = res.data.results;
+        this.initializeMap();
+        
       })
     },
 
@@ -78,14 +83,14 @@ export default {
                 zoom: 5
             });
 
-            this.store.allEstates.forEach(estate => {
-                this.createMarker([estate.address.long, estate.address.lat], "white", estate.title );
-                console.log(estate.title);
-            });
-            console.log(this.store.allEstates);
+            // this.allEstates.forEach(estate => {
+            //     this.createMarker([estate.address.long, estate.address.lat], "white", estate.title );
+            //     console.log(estate.title);
+            //     console.log(this.allEstates);
+            // });
 
 
-           
+            this.addMarker();
 
         },
         createMarker(position, color, popupText) {
@@ -108,12 +113,19 @@ export default {
             new tt.Marker({element: markerElement, anchor: 'bottom'})
                 .setLngLat(position)
                 .setPopup(popup)
-                .addTo(map);
+                .addTo(this.$refs.mapRef);
         },
         getAllCoordinates(){
 
             store.allEstates.forEach(estate => {
                 // this.estate.lat 
+            });
+        },
+        addMarker(){
+            this.allEstates.forEach(estate => {
+                this.createMarker([estate.address.long, estate.address.lat], "white", estate.title );
+                console.log(estate.title);
+                console.log(this.allEstates);
             });
         }
 
