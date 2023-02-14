@@ -22,7 +22,7 @@ li {
   text-transform: uppercase;
   color: $red;
   font-weight: light;
-  font-size: 0.7rem;
+  font-size: .8rem;
   position: relative;
 
   &:hover {

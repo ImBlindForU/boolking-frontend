@@ -26,16 +26,16 @@ export default {
       opacity: 0,
       alpha: 0,
       scale: 0.1,
-      duration: .2, 
-      stagger: .2
+      duration: .5, 
+      stagger: .4
 
     },{
       duration: .5,
       opacity: 1,
       scale: 1,
-      duration: .2, 
+      
       // x: 0,
-      stagger: .2
+      stagger: .4
     })
 
   }
