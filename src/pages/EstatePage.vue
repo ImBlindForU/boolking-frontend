@@ -25,7 +25,7 @@ export default {
   mounted(){
 
                   // main
-                  const estateImgDiv = document.getElementsByClassName("estate-show-img");
+                  // const estateImgDiv = document.getElementsByClassName("estate-show-img");
                   //thumbnail
                   // const track = document.getElementById("image-track");
                   // console.log(track);
@@ -106,18 +106,9 @@ export default {
                   const mainImages = document.getElementsByClassName("main-image");
                   const thumbImages = document.getElementsByClassName("thumb-image");
 
-                  // mainImages[this.currentIndex].classList.add("active");
+                
 
-                  //Thumbnail imgs nav
-                  for (let index = 0; index < thumbImages.length; index++) {
-                    const thisThumb = thumbImages[index];
-
-                    // thisThumb.addEventListener("click", function () {
-                    //   mainImages[this.currentIndex].classList.remove("active");
-                    //   currentIndex = index;
-                    //   mainImages[this.currentIndex].classList.add("active");
-                    // });
-                  }
+              
 
   },
   methods: {
@@ -202,20 +193,20 @@ export default {
 
 
         },
-    showNext: function () {
-      if (this.currentSlider < this.slides.length - 1) {
-        this.currentSlider++;
-      } else {
-        this.currentSlider = 0;
-      }
-    },
-    showPrev: function () {
-      if (this.currentSlider > 0) {
-        this.currentSlider--;
-      } else {
-        this.currentSlider = this.slides.length - 1;
-      }
-    },
+    // showNext: function () {
+    //   if (this.currentSlider < this.slides.length - 1) {
+    //     this.currentSlider++;
+    //   } else {
+    //     this.currentSlider = 0;
+    //   }
+    // },
+    // showPrev: function () {
+    //   if (this.currentSlider > 0) {
+    //     this.currentSlider--;
+    //   } else {
+    //     this.currentSlider = this.slides.length - 1;
+    //   }
+    // },
     showThumbImg(clickedImg) {
       this.currentSlider = clickedImg;
     },
@@ -232,7 +223,7 @@ export default {
       <div class="main-image" :class="currentSlider ? 'active' : 'active'"  :src="`http://127.0.0.1:8000/storage/${images[currentSlider]}`" draggable="false" ></div>
       
             <div id="image-track" ref="track" data-mouse-down-at="0" data-prev-percentage="0">
-              <div class="thumb-image"   v-for="img, key in images" :key="key" :src="`http://127.0.0.1:8000/storage/${img}`" draggable="false"></div>
+              <div class="thumb-image"  @click="showThumbImg(key)"  v-for="img, key in images" :key="key" :src="`http://127.0.0.1:8000/storage/${img}`" draggable="false"></div>
             
             </div>
         </div>
@@ -320,7 +311,7 @@ export default {
         height: 56vmin; */
         width: 30vmin;
         height: 35vmin;
-        object-fit: cover;
+        object-fit: contain;
         object-position: 100% center;
         border-radius: 5px;
         box-shadow: 2px 9px 20px black;
