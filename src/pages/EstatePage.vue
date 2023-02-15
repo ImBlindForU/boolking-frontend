@@ -99,6 +99,7 @@ export default {
 </script>
 <template>
   <div class="container">
+    <h1>{{ estate.title }}</h1>
     <div class="estate-show-img">
             <img  :src="`http://127.0.0.1:8000/storage/${estate.cover_img}`" alt="" srcset="">
             <img  v-show="estate.images" v-for="img in estate.images"  :src="`http://127.0.0.1:8000/storage/${img.path}`" alt="" srcset="">
@@ -106,7 +107,6 @@ export default {
         <div class="container-text">
             <div class="estate-show-txt">
              
-                  <h5>{{ estate.title }}</h5>
                   <p> <span>Tipologia:</span> {{ estate.type }}</p>
                   <p> <span>&#x33A1;:</span> {{ estate.mq }}</p>
                   <p><span>Prezzo:</span>  {{ estate.price }}</p>
@@ -122,7 +122,7 @@ export default {
 
             <div class="message-show-box">
               <input placeholder="Inserisci la tua mail" type="text">
-              <textarea placeholder="Inserisci le tue domande" name="" id="" cols="30" rows="10"></textarea>
+              <textarea placeholder="Inserisci le domande per il proprietario" name="" id="" cols="30" rows="10"></textarea>
               <a class="our-btn" href="">Invia Email</a>
             </div>
           </div>
@@ -136,7 +136,11 @@ export default {
 @use "../styles/partials/_variables" as *;
 
 
+.container{
 
+  margin: 2em auto;
+  padding-bottom: 8em;
+}
 .estate-show-img{
   display: flex;
   padding-top: 3rem;
@@ -183,7 +187,7 @@ export default {
 
 .additional{
   @include my-flex(column, center);
-  width: 50%;
+  width: 40%;
   @media screen and (max-width: 500px) {
                   width: 100%;
                   }
@@ -196,16 +200,47 @@ export default {
     
     }
 .message-show-box{
-  padding-top: 3rem;
   display: flex;
   flex-direction: column;
+  // border: 1px solid $red;
+  margin: 3em auto;
+  width: 100%;
+  border-radius: 20px;
+  padding: 1em;
+  background-color: $greybg;
+  box-shadow: 0px 5px 5px #827b7b;
+
+
+  & > *{
+    margin-bottom: 1em;
+    border-radius: 20px;
+  }
+  input{
+   padding: .5em;
+   font-size: 1rem;
+   font-family: "Josefin Sans", sans-serif;
+
+   width: 80%;
+   text-align: center;
+    margin: 0 auto 1em;
+    border: none;
+    background-color: white;
+  }
   textarea{
-    margin-top: 1rem;
+   border: none;
+   padding: 1em .5em;
+   font-family: "Josefin Sans", sans-serif;
+   font-size: 1rem;
+   background-color: white;
+   width: 100%;
+   max-width: 100%;
+
   }
   a{
-    margin-top: 1rem;
+   margin: 0 auto;
     text-align: center;
     border: 1px solid red;
+    width: 8em;
   }
 }
 }
