@@ -78,6 +78,7 @@ export default {
               -20px -20px 60px #f3ffff;
               display: flex;
               overflow-x: auto;
+              overflow-y: hidden;
               scroll-snap-type: x mandatory;
               // padding: 10px;
               gap: 12px;
