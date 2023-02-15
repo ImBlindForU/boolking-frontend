@@ -74,62 +74,60 @@ export default {
     },
 
     initializeMap() {
-            // const mapdiv = document.getElementById('tom-map')
+            this.$refs.mapRef.innerHTML = ""
+            let center = [];
 
-             const map = tt.map({
+              if(this.allEstates.length > 0){
+                center = [this.allEstates[0].address.long, this.allEstates[0].address.lat]
+              } else {
+                center = [12.4964, 41.9028]
+              }
+
+              const map = tt.map({
                 key: this.KEY,
                 container: this.$refs.mapRef,
-                center: [ 12.4964, 41.9028,],
-                zoom: 5
-            });
+                center: center,
+                zoom: 7
+              })
+              this.allEstates.forEach(estate => {
+               const markerElement = document.createElement("div")
+                markerElement.id = "marker"
+                const logo = new URL("../assets/marker.png", import.meta.url).href
+                markerElement.style.backgroundImage = `url(${logo})`
+                markerElement.style.width = "30px"
+                markerElement.style.height = "30px"
+                markerElement.style.backgroundSize = "cover"
+                markerElement.style.borderRadius= "20px"
+               const marker = new tt.Marker({ element: markerElement, anchor: "center"})
+                   .setLngLat([estate.address.long, estate.address.lat])
+                   .addTo(map);
+                   const popupOffsets = {
+                         top: [0, 0],
+                         bottom: [0, -15],
+                         "bottom-right": [0, -70],
+                         "bottom-left": [0, -70],
+                         left: [25, -35],
+                         right: [-25, -35],
+                       }
 
-            // this.allEstates.forEach(estate => {
-            //     this.createMarker([estate.address.long, estate.address.lat], "white", estate.title );
-            //     console.log(estate.title);
-            //     console.log(this.allEstates);
-            // });
+
+                   //custom popup
+                   const customPopUp = document.createElement("div")
+                   customPopUp.id = "my-pop-up"
+                   customPopUp.innerHTML = `<p> ${estate.title} </p>`
+                   customPopUp.style.color = "black"
+                   customPopUp.style.width = "150px"
+
+                   // const popup = new tt.Popup({ offset: popupOffsets, closeOnMove: true }).setDOMContent(customPopUp)
+                   const popup = new tt.Popup({offset: popupOffsets, closeOnMove: true}).setDOMContent(customPopUp)
+
+                 marker.setPopup(popup)
+             });
 
 
-            this.addMarker();
+
 
         },
-        createMarker(position, color, popupText) {
-            var markerElement = document.createElement('div');
-            markerElement.className = 'marker';
-
-            var markerContentElement = document.createElement('div');
-            markerContentElement.className = 'marker-content';
-            markerContentElement.style.backgroundColor = color;
-            markerElement.appendChild(markerContentElement);
-
-            var iconElement = document.createElement('div');
-            iconElement.className = 'marker-icon';
-            iconElement.style.backgroundImage =
-                'url(../assets/' + 'marker.png' + ')';
-            markerContentElement.appendChild(iconElement);
-
-            var popup = new tt.Popup({offset: 30}).setText(popupText);
-            // add marker to map
-            new tt.Marker({element: markerElement, anchor: 'bottom'})
-                .setLngLat(position)
-                .setPopup(popup)
-                .addTo(this.$refs.mapRef);
-        },
-        getAllCoordinates(){
-
-            store.allEstates.forEach(estate => {
-                // this.estate.lat 
-            });
-        },
-        addMarker(){
-            this.allEstates.forEach(estate => {
-                this.createMarker([estate.address.long, estate.address.lat], "white", estate.title );
-                console.log(estate.title);
-                console.log(this.allEstates);
-            });
-        }
-
-
   },
 };
 </script>
@@ -139,7 +137,7 @@ export default {
       <div class="container">
         <form class="search" >
             <div class="addressSearch">
-                <input type="text" name="address" v-model="filteredStreet" placeholder="Inserisci un indirizzo o una città">
+                <input type="text" name="address" v-model="filteredStreet" placeholder="Inserisci un indirizzo">
                 <input type="text" name="city" v-model="filteredCity" placeholder="Inserisci una città">
                 <input type="number" name="distance" v-model="distance" placeholder="Distanza" >
             </div>

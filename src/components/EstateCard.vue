@@ -75,35 +75,27 @@ export default {
            .estate-img{
                width: 100%;
                box-shadow:  20px 20px 60px #b3c9d3,
-
               -20px -20px 60px #f3ffff;
-
               display: flex;
-
-              overflow: auto;
-
+              overflow-x: auto;
               scroll-snap-type: x mandatory;
-
-              padding: 10px;
-
+              // padding: 10px;
               gap: 12px;
-
               scroll-padding: 10px;
 
              .estate-img img{
-                  flex: 0 0 100%;
-
-                  scroll-snap-align: start;
-
-                  scroll-snap-stop: always;
+              flex: 0 0 100%;
+              scroll-snap-align: start;
+              scroll-snap-stop: always;
              } 
 
                img{
                width: 100%;
+               min-width: 100%;
                height: 200px;
-                   max-width: 100%;
-                   object-fit: cover;
-                   object-position: center;
+               max-width: 100%;
+               object-fit: cover;
+               object-position: center;
                }
            }
    
