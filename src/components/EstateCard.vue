@@ -111,7 +111,7 @@ export default {
               overflow-y: hidden;
               scroll-snap-type: x mandatory;
               // padding: 10px;
-              gap: 12px;
+              gap: 1px;
               scroll-padding: 10px;
 
              .estate-img img{
