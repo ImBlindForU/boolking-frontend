@@ -38,12 +38,20 @@ export default {
     getFilteredEstates(){
         // console.log(store.allEstates);
 
+
+        
+
       const option = {
                 params: {
-                  distance: this.distance,
                   ...this.filteredServices && {services: this.filteredServices}
                 }
             }
+
+      if (this.distance) {
+        option.params.distance = this.distance
+        } else {
+          option.params.distance = 20
+        }
 
       if(this.filteredStreet){
         option.params.street = this.filteredStreet
