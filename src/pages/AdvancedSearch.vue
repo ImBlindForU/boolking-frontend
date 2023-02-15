@@ -223,7 +223,7 @@ export default {
         padding: 1em .5em;
         @include my-flex(column, start);
         transition: all 300ms;
-        box-shadow:   0 0 10px rgb(179, 177, 177); 
+        box-shadow: 0px 10px 10px #827b7b;
 
 
         .addressSearch{
@@ -267,20 +267,20 @@ export default {
 
             @media screen and (max-width: 500px) {
                 @include my-flex(column, flex-start);
-                align-items: flex-start;
+                align-items: center;
                 flex-wrap: nowrap;
-            height: fit-content;
+                height: fit-content;
 
 
                    }
 
             .form-group{
               align-items: flex-start;
-              width: 25%;
+              width: 30%;
               min-width: 50px;
-              @include my-flex(row, flex-start);
+              @include my-flex(row, center);
               gap: .3em;
-              font-weight: 100;
+              font-weight: 200;
 
                 
 
@@ -297,7 +297,8 @@ export default {
                     position: relative;
                     cursor: pointer;
                     width: max-content;
-                    min-width: 115px;
+                    min-width: 150px;
+                    color: $red;
 
                     @media screen and (max-width: 670px) {
                       @include my-flex(row, flex-start);
@@ -305,7 +306,7 @@ export default {
                       flex-wrap: nowrap;
                       height: fit-content;
                       width: max-content;
-                      min-width: 115px;
+                      min-width: 150px;
                   }
                 }
 
@@ -363,9 +364,11 @@ export default {
 
     #tom-map {
       margin: 0 auto;
-    height: 30em;
-    width: 80%;
-    border-radius: 10px;
+      height: 30em;
+      width: 80%;
+      border-radius: 20px;
+      box-shadow: 0px 5px 5px #827b7b;
+
     
     }
 
