@@ -219,6 +219,7 @@ export default {
                 padding: .5em 1em;
                 border-radius: 20px;
                 border: none;
+                font-size: 1rem;
 
                 &:first-child{
                     width: 100%;
