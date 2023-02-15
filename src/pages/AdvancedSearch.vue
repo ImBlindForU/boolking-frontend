@@ -207,6 +207,7 @@ export default {
         padding: 1em .5em;
         @include my-flex(column, start);
         transition: all 300ms;
+        box-shadow:   0 0 10px rgb(179, 177, 177); 
 
 
         .addressSearch{

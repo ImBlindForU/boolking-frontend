@@ -50,10 +50,18 @@ export default {
   methods: {
     updateScroll() {
       this.scrollPosition = window.scrollY;
+      this.closeMenu()
+
     },
     showMenu() {
       this.hamMenu = !this.hamMenu;
     },
+    closeMenu(){
+      if (this.hamMenu) {
+        console.log("chiuso");
+        window.addEventListener("click", this.showMenu())
+      }
+    }
   },
   mounted() {
     window.addEventListener("scroll", this.updateScroll);
@@ -87,7 +95,9 @@ export default {
         </ul>
       </nav>
       <div class="ham-nav">
-        <i @click="showMenu" class="fa-solid fa-bars"></i>
+        
+        <i v-if="!hamMenu" @click="showMenu" class="fa-solid fa-bars"></i>
+        <i v-else @click="showMenu" class="fa-solid fa-xmark"></i>
         <ul v-show="hamMenu">
           <HeaderNav
             v-for="(item, index) in navHeaderList"
