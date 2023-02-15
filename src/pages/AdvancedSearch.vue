@@ -37,11 +37,7 @@ export default {
   methods: {
 
     getFilteredEstates(){
-        // console.log(store.allEstates);
-
-
-        
-
+      
       const option = {
                 params: {
                   ...this.filteredServices && {services: this.filteredServices}
@@ -67,9 +63,15 @@ export default {
 
 
       axios.get(this.store.backEndURL, option).then(res => {
-        console.log(res.data.results);
-        this.store.allEstates = res.data.results;
-        this.allEstates = res.data.results;
+        if (res.data.success) {
+          
+          console.log(res.data.results);
+          this.store.allEstates = res.data.results;
+          this.allEstates = res.data.results;
+    
+        } else{
+          this.allEstates = [];
+        }
         this.initializeMap();
         
       })
@@ -87,6 +89,7 @@ export default {
             let center = [];
 
               if(this.allEstates.length > 0){
+                console.log(this.allEstates.length);
                 center = [this.allEstates[0].address.long, this.allEstates[0].address.lat]
               } else {
                 center = [12.4964, 41.9028]
@@ -138,7 +141,7 @@ export default {
 
         },
 
-        animate(){
+    animate(){
         const timeline = gsap.timeline({defaults: {duration: .5, }});
                     timeline
                     .from(".search", { opacity: 0,ease: "ease.Out"})
@@ -183,7 +186,8 @@ export default {
     <div class="content-wrapper">
 
       <div class="cards-container ">
-         <EstateCard v-for="estate in store.allEstates" :estate="estate" ></EstateCard>
+         <EstateCard v-for="estate in allEstates" :estate="estate" ></EstateCard>
+         <p v-show="allEstates.length === 0"> La ricerca non ha prodotto risultati</p>
      </div>
     </div>
   
