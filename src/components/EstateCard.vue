@@ -46,6 +46,8 @@ export default {
  <div  v-if="estate.is_visible" class="estate-card ">
         <div class="estate-img">
             <img  :src="`http://127.0.0.1:8000/storage/${estate.cover_img}`" alt="" srcset="">
+            <img  v-show="estate.images" v-for="img in estate.images"  :src="`http://127.0.0.1:8000/storage/${img.path}`" alt="" srcset="">
+
         </div>
         <div class="estate-txt">
             <div>
@@ -60,6 +62,7 @@ export default {
 
 <style lang="scss" scoped>
  .estate-card{
+  opacity: 0;
   height: 300px;
            border: 1px solid #c1baba;
            border-radius: 15px;
@@ -71,6 +74,30 @@ export default {
            // align-items: center;
            .estate-img{
                width: 100%;
+               box-shadow:  20px 20px 60px #b3c9d3,
+
+              -20px -20px 60px #f3ffff;
+
+              display: flex;
+
+              overflow: auto;
+
+              scroll-snap-type: x mandatory;
+
+              padding: 10px;
+
+              gap: 12px;
+
+              scroll-padding: 10px;
+
+             .estate-img img{
+                  flex: 0 0 100%;
+
+                  scroll-snap-align: start;
+
+                  scroll-snap-stop: always;
+             } 
+
                img{
                width: 100%;
                height: 200px;
