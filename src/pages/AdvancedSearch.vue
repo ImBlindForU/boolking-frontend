@@ -143,7 +143,7 @@ export default {
                     timeline
                     .from(".search", { opacity: 0,ease: "ease.Out"})
                     .from("input", { opacity: 0,ease: "ease.Out", stagger: .1})
-                    .from("label", { opacity: 0,ease: "ease.Out", stagger: .1})
+                    // .from("label", { opacity: 0,ease: "ease.Out", stagger: .1})
                     .from("#tom-map",{ opacity: 0,ease: "power2.in" })
                     .from(".cards-container",{  opacity: 0})
                     
