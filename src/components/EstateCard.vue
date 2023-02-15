@@ -62,6 +62,36 @@ export default {
 
 <style lang="scss" scoped>
  .estate-card{
+
+  /* width */
+::-webkit-scrollbar {
+  
+
+  height: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  padding: .3em;
+  box-shadow: inset 0 0 5px rgb(179, 177, 177); 
+  
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #cdd0d2; 
+  transition: all 200ms;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #ff5a60; 
+  transition: all 200ms;
+
+}
+
+
   opacity: 0;
   height: 300px;
            border: 1px solid #c1baba;
