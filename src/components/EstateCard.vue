@@ -55,6 +55,7 @@ export default {
                 <p>Tipologia: {{ estate.type }}</p>
                 <p>&#x33A1;: {{ estate.mq }}</p>
                 <p>Prezzo: {{ estate.price }}</p>
+                <router-link :to="{name: 'estate-page', params: {slug: estate.slug}}" class="our-btn">Visualizza</router-link>
             </div>
         </div>
     </div>

@@ -1,6 +1,9 @@
 import { createRouter, createWebHistory } from "vue-router";
 import AppHome from "./pages/AppHome.vue";
 import AdvancedSearch from "./pages/AdvancedSearch.vue"
+import EstatePage from "./pages/EstatePage.vue"
+
+
 // import About from "./pages/About.vue";
 // import ProjectsList from "./pages/ProjectsList.vue";
 // import SingleProject from "./pages/SingleProject.vue";
@@ -33,6 +36,11 @@ const router = createRouter({
             path: "/contact-us",
             name: "contact-us",
             // component: ContactUs,
+        },
+        {
+            path: "/estates/:slug",
+            name: "estate-page",
+            component: EstatePage,
         },
         {
             path: "/:pathMatch(.*)*",

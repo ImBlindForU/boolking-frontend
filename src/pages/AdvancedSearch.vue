@@ -360,8 +360,7 @@ export default {
         button{
           width: 20vmax;
           font-size: 1.2rem;
-          border: inset ;
-          
+          border:1px solid red;
         }
 
 
