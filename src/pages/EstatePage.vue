@@ -113,7 +113,7 @@ export default {
                   <p><span>Descrizione:</span>  {{ estate.description }}</p>
                   <p><span>Servizi:</span></p>
                   <ul id="services">
-                    <li v-for="service in estate.services">{{ service.name }}</li>
+                    <li v-for="service in estate.services"> <span><i class="fa-brands fa-airbnb"></i></span>{{ service.name }}</li>
                   </ul>
              
           </div>
@@ -169,6 +169,10 @@ export default {
                  }
       li{
         margin-left: .5em !important;
+
+        span{
+          margin-right: .3em;
+        }
       }
     
   }
