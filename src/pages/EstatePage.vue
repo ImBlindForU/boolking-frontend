@@ -13,6 +13,8 @@ export default {
       estate: {},
       map: null,
       KEY: "e3ENGW4vH2FBakpfksCRV16OTNwyZh0e",
+      images: [],
+      currentSlider : 0,
 
     };
   },
@@ -20,7 +22,100 @@ export default {
     this.callApiEstate();
   },
   mounted(){
-      
+
+                  // main
+                  const estateImgDiv = document.getElementsByClassName("estate-show-img");
+                  //thumbnail
+                  const track = document.getElementById("image-track");
+                  console.log(track);
+
+                  const handleOnDown = (e) => (track.dataset.mouseDownAt = e.clientX);
+
+                  const handleOnUp = () => {
+                    track.dataset.mouseDownAt = "0";
+                    track.dataset.prevPercentage = track.dataset.percentage;
+                  };
+
+                  const handleOnMove = (e) => {
+                    if (track.dataset.mouseDownAt === "0") return;
+
+                    const mouseDelta = parseFloat(track.dataset.mouseDownAt) - e.clientX,
+                      maxDelta = window.innerWidth / 2;
+
+                    const percentage = (mouseDelta / maxDelta) * -100,
+                      nextPercentageUnconstrained =
+                        parseFloat(track.dataset.prevPercentage) + percentage,
+                      nextPercentage = Math.max(Math.min(nextPercentageUnconstrained, 0), -100);
+
+                    track.dataset.percentage = nextPercentage;
+
+                    track.animate(
+                      {
+                        transform: `translate(${nextPercentage}%, -50%)`,
+                      },
+                      { duration: 1200, fill: "forwards" }
+                    );
+
+                    for (const image of track.getElementsByClassName("thumb-image")) {
+                      image.animate(
+                        {
+                          objectPosition: `${100 + nextPercentage}% center`,
+                        },
+                        { duration: 1200, fill: "forwards" }
+                      );
+                    }
+                  };
+
+                  window.onmousedown = (e) => handleOnDown(e);
+
+                  window.ontouchstart = (e) => handleOnDown(e.touches[0]);
+
+                  window.onmouseup = (e) => handleOnUp(e);
+
+                  window.ontouchend = (e) => handleOnUp(e.touches[0]);
+
+                  window.onmousemove = (e) => handleOnMove(e);
+
+                  window.ontouchmove = (e) => handleOnMove(e.touches[0]);
+
+                  // display images
+                  // for (let index = 0; index < this.images.length; index++) {
+                  //   const currentImage = imgs[index];
+
+                  //   const element = ` <img
+                  //         class="main-image"
+                  //         src="${currentImage}"
+                  //         draggable="false"
+                  //       />`;
+
+                  //   const thumbImage = ` <img
+                  //         class="thumb-image"
+                  //         src="${currentImage}"
+                  //         draggable="false"
+                  //       />`;
+
+                  //   estateImgDiv.innerHTML += element;
+                  //   track.innerHTML += thumbImage;
+                  // }
+
+                  //starting point
+
+                  const mainImages = document.getElementsByClassName("main-image");
+                  const thumbImages = document.getElementsByClassName("thumb-image");
+
+                  // mainImages[this.currentIndex].classList.add("active");
+
+                  //Thumbnail imgs nav
+                  for (let index = 0; index < thumbImages.length; index++) {
+                    const thisThumb = thumbImages[index];
+
+                    // thisThumb.addEventListener("click", function () {
+                    //   mainImages[this.currentIndex].classList.remove("active");
+                    //   currentIndex = index;
+                    //   mainImages[this.currentIndex].classList.add("active");
+                    // });
+                  }
+
   },
   methods: {
     callApiEstate(){
@@ -34,6 +129,13 @@ export default {
         }
 
         this.initializeMap();
+        this.images.push(this.estate.cover_img);
+
+        this.estate.images.forEach(img => {
+          
+          this.images.push(img.path);
+        });
+        console.log(this.images);
 
       })
     },
@@ -97,6 +199,24 @@ export default {
 
 
         },
+    showNext: function () {
+      if (this.currentSlider < this.slides.length - 1) {
+        this.currentSlider++;
+      } else {
+        this.currentSlider = 0;
+      }
+    },
+    showPrev: function () {
+      if (this.currentSlider > 0) {
+        this.currentSlider--;
+      } else {
+        this.currentSlider = this.slides.length - 1;
+      }
+    },
+    showThumbImg(clickedImg) {
+      this.currentSlider = clickedImg;
+    },
+
     },
 };
 </script>
@@ -104,9 +224,14 @@ export default {
   <div class="container">
     <h1>{{ estate.title }}</h1>
     <div class="estate-show-img">
-            <img  :src="`http://127.0.0.1:8000/storage/${estate.cover_img}`" alt="" srcset="">
-            <img  v-show="estate.images" v-for="img in estate.images"  :src="`http://127.0.0.1:8000/storage/${img.path}`" alt="" srcset="">
-            <div id="image-track" data-mouse-down-at="0" data-prev-percentage="0"></div>
+      <img  class="main-image" :src="`http://127.0.0.1:8000/storage/${images[0]}`" alt="" srcset="">
+
+      <div class="main-image" :class="currentSlider ? 'active' : 'active'"  :src="`http://127.0.0.1:8000/storage/${images[0]}`" draggable="false" ></div>
+      
+            <div id="image-track" data-mouse-down-at="0" data-prev-percentage="0">
+              <div class="thumb-image"   v-for="img, key in images" :key="key" :src="`http://127.0.0.1:8000/storage/${img}`" draggable="false"></div>
+            
+            </div>
         </div>
         <div class="container-text">
             <div class="estate-show-txt">
@@ -145,9 +270,60 @@ export default {
   margin: 2em auto;
   padding-bottom: 8em;
 }
-.estate-show-img{
-  display: flex;
-  padding-top: 3rem;
+  .estate-show-img{
+    display: flex;
+    padding-top: 3rem;
+    position: relative;
+    overflow-x: hidden;
+
+      .main-image {
+      width: 100%;
+      height: 100vmin;
+      object-fit: cover;
+      display: none;
+      border: 1px solid red;
+      overflow-x: hidden;
+    }
+
+    .active {
+      display: block !important;
+    }
+
+    #image-track {
+      display: flex;
+      gap: 2vmin;
+      position: absolute;
+      left: 50%;
+      bottom: 0%;
+      /* original 
+      top: 50%; */
+      width: 100%;
+      border: 1px solid green;
+      transform: translate(-50%, -50%);
+      transition: all 1500ms;
+      user-select: none; /* --  image highlighting -- */
+      height: 100px;
+      overflow-x: hidden;
+      /* border: 1px solid red; */
+    }
+
+      // #image-track:hover {
+      //   top: 95%;
+      // }
+
+      #image-track > .thumb-image {
+        /* original
+        width: 40vmin;
+        height: 56vmin; */
+        width: 30vmin;
+        height: 35vmin;
+        object-fit: cover;
+        object-position: 100% center;
+        border-radius: 5px;
+        box-shadow: 2px 9px 20px black;
+      }
+
+
 }
 .estate-show-txt{
   padding-top: 2rem;
