@@ -168,10 +168,9 @@ export default {
             </div>
             <div class="services">
                 <template v-for="service in store.allServices">
-                    <div class="checkboxes">
-
+                    <div class="form-group">
                         <input  type="checkbox" :name="service.name" :id="service.id" :value="service.id" v-model="filteredServices">
-                        <label>{{ service.name }}</label>
+                        <label :for="service.id" >{{ service.name }}</label>
                     </div>
                 </template>
 
@@ -275,13 +274,79 @@ export default {
 
                    }
 
-            div{
+            .form-group{
               align-items: flex-start;
               width: 25%;
               min-width: 50px;
-            @include my-flex(row, flex-start);
-                gap: .3em;
-                font-weight: 100;
+              @include my-flex(row, flex-start);
+              gap: .3em;
+              font-weight: 100;
+
+                
+
+                  input {
+                    padding: 0;
+                    height: initial;
+                    width: initial;
+                    margin-bottom: 0;
+                    display: none;
+                    cursor: pointer;
+                  }
+
+                  label {
+                    position: relative;
+                    cursor: pointer;
+                    width: max-content;
+                    min-width: 115px;
+
+                    @media screen and (max-width: 670px) {
+                      @include my-flex(row, flex-start);
+                      align-items: flex-start;
+                      flex-wrap: nowrap;
+                      height: fit-content;
+                      width: max-content;
+                      min-width: 115px;
+                  }
+                }
+
+                   label:before {
+                    content:'';
+                    appearance: none;
+                    -webkit-appearance: none;
+                    background-color: transparent;
+                    border: 2px solid $red;
+                    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0px -15px 10px -12px rgba(0, 0, 0, 0);
+                    padding: 5px;
+                    display: inline-block;
+                    position: relative;
+                    vertical-align: middle;
+                    cursor: pointer;
+                    margin-right: 5px;
+                    border-radius: 50%;
+                  }
+
+                   input:checked + label:after {
+                    content: '';
+                    display: block;
+                    position: absolute;
+                    top: 4px;
+                    left: 1px;
+                    right: 0.2px;
+                    width: 9.2px;
+                    height: 9px;
+                    border: solid $red;
+                    background-color: $red;
+                    border-radius: 50%;
+
+                    @media screen and (max-width: 670px) {
+                      top: 1px;
+                      left: 1px;
+                  }
+                    @media screen and (min-width: 1200px) {
+                      top: 2px;
+                      left: 1px;
+                  }
+                  }
 
             }
 
