@@ -29,6 +29,7 @@ export default {
       
     },
     mounted(){
+      this.animate()
         // this.initializeMap()
         // this.addMarker()
     
@@ -136,6 +137,22 @@ export default {
 
 
         },
+
+        animate(){
+        const timeline = gsap.timeline({defaults: {duration: .5, }});
+                    timeline
+                    .from(".search", { opacity: 0,ease: "ease.Out"})
+                    .from("input", { opacity: 0,ease: "ease.Out", stagger: .1})
+                    .from("label", { opacity: 0,ease: "ease.Out", stagger: .1})
+                    .from("#tom-map",{ opacity: 0,ease: "power2.in" })
+                    .from(".cards-container",{  opacity: 0})
+                    
+            // setInterval( this.loading = !this.loading && console.log(2), 3000) ;   
+                  // console.log(timeline);
+                  // if (timeline) {
+                    
+                  // }
+    }
   },
 };
 </script>
@@ -151,7 +168,7 @@ export default {
             </div>
             <div class="services">
                 <template v-for="service in store.allServices">
-                    <div>
+                    <div class="checkboxes">
 
                         <input  type="checkbox" :name="service.name" :id="service.id" :value="service.id" v-model="filteredServices">
                         <label>{{ service.name }}</label>
@@ -280,8 +297,9 @@ export default {
     }
 
     #tom-map {
+      margin: 0 auto;
     height: 30em;
-    width: 100%;
+    width: 80%;
     border-radius: 10px;
     
     }
