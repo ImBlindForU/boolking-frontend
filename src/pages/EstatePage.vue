@@ -15,6 +15,7 @@ export default {
       KEY: "e3ENGW4vH2FBakpfksCRV16OTNwyZh0e",
       images: [],
       currentSlider : 0,
+      track: null
 
     };
   },
@@ -26,8 +27,10 @@ export default {
                   // main
                   const estateImgDiv = document.getElementsByClassName("estate-show-img");
                   //thumbnail
-                  const track = document.getElementById("image-track");
-                  console.log(track);
+                  // const track = document.getElementById("image-track");
+                  // console.log(track);
+
+                  const track = this.$refs.track 
 
                   const handleOnDown = (e) => (track.dataset.mouseDownAt = e.clientX);
 
@@ -224,11 +227,11 @@ export default {
   <div class="container">
     <h1>{{ estate.title }}</h1>
     <div class="estate-show-img">
-      <img  class="main-image" :src="`http://127.0.0.1:8000/storage/${images[0]}`" alt="" srcset="">
+     
 
-      <div class="main-image" :class="currentSlider ? 'active' : 'active'"  :src="`http://127.0.0.1:8000/storage/${images[0]}`" draggable="false" ></div>
+      <div class="main-image" :class="currentSlider ? 'active' : 'active'"  :src="`http://127.0.0.1:8000/storage/${images[currentSlider]}`" draggable="false" ></div>
       
-            <div id="image-track" data-mouse-down-at="0" data-prev-percentage="0">
+            <div id="image-track" ref="track" data-mouse-down-at="0" data-prev-percentage="0">
               <div class="thumb-image"   v-for="img, key in images" :key="key" :src="`http://127.0.0.1:8000/storage/${img}`" draggable="false"></div>
             
             </div>
@@ -278,7 +281,7 @@ export default {
 
       .main-image {
       width: 100%;
-      height: 100vmin;
+      height: 500px;
       object-fit: cover;
       display: none;
       border: 1px solid red;
