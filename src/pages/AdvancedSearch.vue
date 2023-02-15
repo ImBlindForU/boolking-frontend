@@ -356,6 +356,7 @@ export default {
         button{
           width: 20vmax;
           font-size: 1.2rem;
+          border: inset ;
           
         }
 
@@ -365,7 +366,7 @@ export default {
     #tom-map {
       margin: 0 auto;
       height: 30em;
-      width: 80%;
+      width: 90%;
       border-radius: 20px;
       box-shadow: 0px 5px 5px #827b7b;
 
