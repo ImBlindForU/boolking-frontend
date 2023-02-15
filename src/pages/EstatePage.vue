@@ -19,6 +19,9 @@ export default {
   created() {
     this.callApiEstate();
   },
+  mounted(){
+      
+  },
   methods: {
     callApiEstate(){
       const currentSlug = this.$route.params.slug;
@@ -103,6 +106,7 @@ export default {
     <div class="estate-show-img">
             <img  :src="`http://127.0.0.1:8000/storage/${estate.cover_img}`" alt="" srcset="">
             <img  v-show="estate.images" v-for="img in estate.images"  :src="`http://127.0.0.1:8000/storage/${img.path}`" alt="" srcset="">
+            <div id="image-track" data-mouse-down-at="0" data-prev-percentage="0"></div>
         </div>
         <div class="container-text">
             <div class="estate-show-txt">
