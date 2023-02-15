@@ -139,7 +139,7 @@ export default {
             <div class="addressSearch">
                 <input type="text" name="address" v-model="filteredStreet" placeholder="Inserisci un indirizzo">
                 <input type="text" name="city" v-model="filteredCity" placeholder="Inserisci una città">
-                <input type="number" name="distance" v-model="distance" placeholder="Distanza" >
+                <input type="number" name="distance" v-model="distance" placeholder="Distanza *" required >
             </div>
             <div class="services">
                 <template v-for="service in store.allServices">
@@ -156,8 +156,11 @@ export default {
         </div>
         <div id='tom-map' ref="mapRef"></div>
     </div>
-     <div class="cards-container ">
-        <EstateCard v-for="estate in store.allEstates" :estate="estate" ></EstateCard>
+    <div class="content-wrapper">
+
+      <div class="cards-container ">
+         <EstateCard v-for="estate in store.allEstates" :estate="estate" ></EstateCard>
+     </div>
     </div>
   
 
@@ -228,11 +231,13 @@ export default {
         .services{
             @include my-flex(column, flex-start);
             flex-wrap: wrap;
-            align-items: start;
+            // align-items: start;
             width: 100%;
-            height: 150px;
+            height: 170px;
             gap: .5em;
             margin-bottom: 1em;
+            align-self: center;
+            padding: .5em 2em;
 
             @media screen and (max-width: 500px) {
                 @include my-flex(column, flex-start);
@@ -244,14 +249,21 @@ export default {
                    }
 
             div{
+              align-items: flex-start;
+              width: 25%;
+              min-width: 50px;
             @include my-flex(row, flex-start);
                 gap: .3em;
-                align-items: center;
-                min-width: 50px;
                 font-weight: 100;
 
             }
 
+        }
+
+        button{
+          width: 20vmax;
+          font-size: 1.2rem;
+          
         }
 
 
