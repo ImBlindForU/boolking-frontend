@@ -55,8 +55,8 @@ export default {
                 <p>Tipologia: {{ estate.type }}</p>
                 <p>&#x33A1;: {{ estate.mq }}</p>
                 <p>Prezzo: {{ estate.price }}</p>
-                <router-link :to="{name: 'estate-page', params: {slug: estate.slug}}" class="our-btn">Visualizza</router-link>
-            </div>
+              </div>
+              <router-link :to="{name: 'estate-page', params: {slug: estate.slug}}" class="our-btn">Visualizza</router-link>
         </div>
     </div>
 </template>
@@ -94,13 +94,14 @@ export default {
 
 
   opacity: 0;
-  height: 300px;
+  height: 350px;
            border: 1px solid #c1baba;
            border-radius: 15px;
            overflow: hidden;
            width: calc(100% / 1 - .25em) !important;
            display: flex;
            flex-direction: column;
+           
            // justify-content: center;
            // align-items: center;
            .estate-img{
@@ -136,11 +137,21 @@ export default {
                background-color: #fff;
                padding: .5em;
                display: flex;
-               direction: row;
+               flex-direction: column;
                justify-content: space-between;
-   
+              height: calc(100% - 200px);
+               
+               
                p{
+                 width: 100%;
                    margin-bottom: .1em !important;
+               }
+
+               a,.our-btn{
+                margin-top: .5em;
+                width: 80%;
+                text-align: center;
+                margin: .5em auto 0;
                }
            }
        
