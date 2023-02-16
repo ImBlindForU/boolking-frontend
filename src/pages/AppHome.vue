@@ -112,25 +112,46 @@ export default {
 
   .search
   {@include my-flex(row, center);
-    margin-bottom: 1em;
+    margin: 1em auto 2em;
     gap: .5em;
+    border: 2px solid $greybg;
+
+    padding: .5em;
+    border-radius: 20px;
+   width: 50%;
+   transition: all 300ms;
+
+   &:hover{
+    transform: scale(1.1);
+   transition: all 300ms;
+   box-shadow:  10px 10px 20px #b3c9d3;
+
+    
+  //   i{
+  //  transition: all 300ms;
+      
+  //     color: white;
+  //   }
+   }
+   
 
     input{
         padding: .5em;
         min-width: 10em;
-        width: 70%;
+        width: 15em;
         border-radius: 20px;
         border: none;
       
     }
 
     i{
-      font-size: 1.3rem
+      font-size: 1.3rem;
+      color: $red ;
     }
 
-    @media screen and (max-width: 500px) {
-      @include my-flex(column, center)
-                 }
+    // @media screen and (max-width: 500px) {
+    //   @include my-flex(column, center)
+    //              }
   }
 
 
