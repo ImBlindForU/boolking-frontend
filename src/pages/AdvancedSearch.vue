@@ -13,6 +13,7 @@ export default {
     return {
       store,
       allEstates: [],
+      filteredEstates: [],
       filteredServices: [],
       filteredStreet: "",
       filteredCity: '',
@@ -73,8 +74,34 @@ export default {
           this.allEstates = [];
         }
         this.initializeMap();
+        // console.log(JSON.parse(JSON.stringify(this.allEstates))); //accedo ai servizi del singolo estate
+        const parsedEstates = JSON.parse(JSON.stringify(this.allEstates));
+        for (let i = 0; i < parsedEstates.length; i++) {
+        const singoloEstate = parsedEstates[i];
+        singoloEstate.match = 0;
+        
+        for (let j = 0; j < singoloEstate.services.length; j++) {
+          const singoloServizio = singoloEstate.services[j];
+
+          if(this.filteredServices.includes(singoloServizio)){
+            singoloEstate.match = singoloEstate.match + 1;
+          }
+          
+          
+          
+        }
+
+        if (singoloEstate.match >= this.filteredServices.length) {
+          console.log(singoloEstate.match)
+          this.filteredEstates.push(singoloEstate)
+        }
+        //  console.log(singolo);
+      }
+      console.log(this.filteredServices.length);
+      console.log(this.filteredEstates);
         
       })
+
     },
 
     getServices(){
