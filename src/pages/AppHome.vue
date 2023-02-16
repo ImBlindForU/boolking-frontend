@@ -115,8 +115,9 @@ export default {
 
     padding: .5em;
     border-radius: 20px;
-   width: 50%;
-   transition: all 300ms;
+    width: 60%;
+    min-width: 30vmin;
+    transition: all 300ms;
 
    &:hover{
     transform: scale(1.1);
@@ -134,7 +135,7 @@ export default {
 
     input{
         padding: .5em;
-        min-width: 10em;
+        min-width: 20vmin;
         width: 15em;
         border-radius: 20px;
         border: none;
