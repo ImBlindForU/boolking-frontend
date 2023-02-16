@@ -69,11 +69,8 @@ export default {
     <div class="container">
       
           <div class="search">
-      
-            <input type="text" name="" id="" v-model="store.startingCity" placeholder="Inserisci una città">
+            <input type="text" name="" id="" v-model="store.startingCity" placeholder="Inserisci una città" @keyup.enter="goToAdvanced()">
               <i @click="goToAdvanced()"  class="fa-solid fa-magnifying-glass"></i>
-           
-      
           </div> 
 
                 <div class="cards-container ">
