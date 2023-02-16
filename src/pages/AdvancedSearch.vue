@@ -1,4 +1,5 @@
 <script>
+
 import axios from "axios";
 import {store} from "../store"
 import { ref } from 'vue'
@@ -23,7 +24,9 @@ export default {
     };
   },
   created() {
-
+      if (this.store.startingCity) {
+        this.filteredCity = this.store.startingCity
+      }
       this.getFilteredEstates()
       this.getServices()
       

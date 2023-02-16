@@ -12,6 +12,7 @@ export const store = reactive({
 //   movies: [],
 //   series: [],
   loading: false,
+  startingCity: "",
 //   selectedMovieGenre: "",
 //   selectedTvGenre: "",
 //   filteredMovies: [],

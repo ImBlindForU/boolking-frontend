@@ -10,9 +10,10 @@ export default {
     return {
       welcome: true,
       store,
+     city: "",
       services: [],
       street: "",
-      city: '',
+      
       distance: null
     };
   },
@@ -26,6 +27,11 @@ export default {
   },
   methods: {
 
+
+    goToAdvanced(){
+        this.$router.push({name: 'Advanced Search'})
+
+    }, 
     getAllEstates(){
 
       const option = {
@@ -57,8 +63,19 @@ export default {
   <div class="my-container-fluid">
     
     <h1>Tutti i nostri alloggi</h1>
-
+    
+    
+    
     <div class="container">
+      
+          <div class="search">
+      
+            <input type="text" name="" id="" v-model="store.startingCity" placeholder="Inserisci una città">
+              <i @click="goToAdvanced()"  class="fa-solid fa-magnifying-glass"></i>
+           
+      
+          </div> 
+
                 <div class="cards-container ">
                     <EstateCard v-for="estate in store.allEstates"
                      :estate="estate" ></EstateCard>
@@ -91,6 +108,29 @@ export default {
     margin-top: 2em;
     padding: 1em 0 4em;
     height: 100%;
+  }
+
+  .search
+  {@include my-flex(row, center);
+    margin-bottom: 1em;
+    gap: .5em;
+
+    input{
+        padding: .5em;
+        min-width: 10em;
+        width: 70%;
+        border-radius: 20px;
+        border: none;
+      
+    }
+
+    i{
+      font-size: 1.3rem
+    }
+
+    @media screen and (max-width: 500px) {
+      @include my-flex(column, center)
+                 }
   }
 
 
