@@ -488,7 +488,12 @@ export default {
       height: 30em;
       width: 90%;
       border-radius: 20px;
-      box-shadow: 0px 5px 5px #827b7b;
+      transition: all 200ms;
+
+      &:hover{
+      transition: all 200ms;
+        box-shadow: 0px 5px 5px #827b7b;
+      }
 
     
     }

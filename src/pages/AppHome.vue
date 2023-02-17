@@ -139,6 +139,8 @@ export default {
         width: 15em;
         border-radius: 20px;
         border: none;
+        font-size: 1rem;
+        font-weight: 100!important;
 
         &:focus{
           outline: none;
