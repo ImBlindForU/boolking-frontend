@@ -15,7 +15,8 @@ export default {
       KEY: "e3ENGW4vH2FBakpfksCRV16OTNwyZh0e",
       name: "",
       email: "",
-      message: ""
+      message: "",
+      processing: false,
 
     };
   },
@@ -102,7 +103,7 @@ export default {
     },
 
     sendForm() {
-      // this.loading = true;
+      this.processing = true;
 
       const data = {
         name: this.name,
@@ -121,7 +122,12 @@ export default {
         } else {
           this.errors = resp.data.errors
         }
-        this.loading = false;
+
+        setTimeout(() => {
+          this.processing = false;
+   
+  }, 3000);
+
 
 
       })
@@ -169,8 +175,14 @@ export default {
             <!-- <p class="error" v-if="errors.message">
                                   {{ errors.message[0] }}
                               </p> -->
-            <button class="our-btn" type="submit">Invia Email</button>
-          </form>
+                              <button class="btn" :class="processing ? 'loading' : ''">
+                            <i class='fa-solid fa-paper-plane'></i>
+                            <span class="text">
+                              Send Message
+                            </span>
+                            <span class="loading-animate"></span>
+                          </button>
+                                    </form>
         </div>
       </div>
     </div>
@@ -318,13 +330,135 @@ export default {
 
       }
 
-      a {
-        margin: 0 auto;
-        text-align: center;
-        border: 1px solid red;
-        width: 8em;
-      }
+      // button {
+      //   margin: 0 auto;
+      //   text-align: center;
+      //   border: 1px solid red;
+      //   width: 8em;
+
+       
+    
+    .btn {
+      margin: 0 auto;
+      text-align: center;
+      justify-self: center;
+        background:$red;
+        border: 0px solid $red;
+        border-radius: 35px;
+        font-size: .8rem;
+        font-weight: 200;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        outline: none;
+        transition: all .25s ease;
+        width: 80%;
+        position: relative;
+        height: 35px;
+        overflow: hidden;
     }
-  }
+    .btn:not(.loading):hover {
+        box-shadow: 0px 10px 25px 0px #827b7b8a;
+    }
+    .btn:not(.loading):hover i {
+        transform: translate(7px);
+    }
+    .btn i {
+      
+        font-size: 1rem;
+        position: absolute;
+        left: 20px;
+        pointer-events: none;
+        z-index: 10;
+        background: inherit;
+        // width: 60px;
+        // height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        border-radius: 50%;
+        transition: all .25s ease;
+    }
+    .btn .text {
+        width: 60%;
+        display: block;
+        position: relative;
+        pointer-events: none;
+        transition: all .25s ease;
+        position: absolute;
+        left: 55px;
+    }
+    .loading-animate {
+        position: absolute;
+        width: 25px;
+        height: 25px;
+        z-index: 100;
+        border-radius: 50%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) ;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        pointer-events: none;
+        opacity: 0;
+        transition: all .25s ease;
+    }
+    .loading-animate:after {
+        content: '';
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        border: 3px solid transparent;
+        border-left: 3px solid #fff;
+        animation: loading infinite .8s ease .05s;
+        position: absolute;
+    }
+    .loading-animate:before {
+        content: '';
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        border: 3px solid transparent;
+        border-left: 3px solid #fff;
+        animation: loading infinite .8s linear;
+        position: absolute;
+        opacity: .6;
+    }
+    .btn.loading {
+        width: 60px;
+    }
+    .btn.loading i {
+        // transform: rotate(-30deg);
+        padding-bottom: 4px;
+        padding-left: 3px;
+    }
+    .btn.loading .text {
+        transform: translate(-140px);
+    }
+    .btn.loading .loading-animate {
+        opacity: 1;
+    }
+    @keyframes loading {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+
+
+  
+      }
+
+      
+    }
+  // }
 }
+
+
 </style>
