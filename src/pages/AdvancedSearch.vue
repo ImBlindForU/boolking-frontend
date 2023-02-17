@@ -141,7 +141,7 @@ export default {
                    //custom popup
                    const customPopUp = document.createElement("div")
                    customPopUp.id = "my-pop-up"
-                   customPopUp.innerHTML = `<p> ${estate.title} </p>`
+                   customPopUp.innerHTML = `<p> <a href="/estates/${estate.slug}"> ${estate.title}</a>  </br> ${estate.price ? estate.price : "Non specificato"} </p>`
                    customPopUp.style.color = "black"
                    customPopUp.style.width = "150px"
 
