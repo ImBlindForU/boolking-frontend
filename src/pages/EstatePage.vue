@@ -292,7 +292,7 @@ export default {
       input {
         padding: .5em;
         font-size: 1rem;
-        font-weight: 200;
+        font-weight: 400;
         font-family: "Josefin Sans", sans-serif;
         border-radius: 15px;
         color: black !important;
@@ -306,7 +306,7 @@ export default {
 
       textarea {
         border: none;
-        font-weight: 200;
+        font-weight: 400;
 
         padding: 1em .5em;
         font-family: "Josefin Sans", sans-serif;
