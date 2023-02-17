@@ -256,8 +256,13 @@ export default {
   border-radius: 20px;
   padding: 1em;
   background-color: $greybg;
-  box-shadow: 0px 5px 5px #827b7b;
+transition: all 200ms;
 
+&:hover{
+  box-shadow: 0px 5px 5px #827b7b;
+transition: all 200ms;
+
+}
   form{
     display: flex;
     flex-direction: column;
