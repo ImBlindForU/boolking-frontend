@@ -112,8 +112,10 @@ export default {
             top: 0;
             right: 0;
             width: fit-content;
-            background-color: #ff5a60;
+            background-color: #ff5a60a7;
             text-align: center;
+            backdrop-filter: blur(10px);
+
             border-radius: 0 10px 0 20px;
             height: 3em;
             display: flex;
