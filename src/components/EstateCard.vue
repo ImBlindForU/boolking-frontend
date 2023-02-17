@@ -46,7 +46,7 @@ export default {
  <div  v-if="estate.is_visible" class="estate-card ">
         <div class="estate-img">
             <img  :src="`http://127.0.0.1:8000/storage/${estate.cover_img}`" alt="" srcset="">
-            <img  v-show="estate.images" v-for="img in estate.images"  :src="`http://127.0.0.1:8000/storage/${img.path}`" alt="" srcset="">
+            <img  v-show="estate.images" v-for="img in estate.images"  :src="`http://127.0.0.1:8000/storage/${img.path}`" draggable="false" alt="" srcset="">
 
         </div>
         <div class="estate-txt">
@@ -66,15 +66,14 @@ export default {
 
   /* width */
 ::-webkit-scrollbar {
-  
-
-  height: 7px;
+  height: 5px;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
   padding: .3em;
   box-shadow: inset 0 0 5px rgb(179, 177, 177); 
+  display: none;
   
 }
  
@@ -83,6 +82,8 @@ export default {
   background: #cdd0d2; 
   transition: all 200ms;
   border-radius: 10px;
+  width: 5px;
+// display: none;
 }
 
 /* Handle on hover */
