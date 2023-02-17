@@ -267,8 +267,8 @@ export default {
 
   /* Swiper */
 .swiper{
+  margin-top: 1em;
   padding-bottom: 2em;
-
 }
 
 figure{
