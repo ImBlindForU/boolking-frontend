@@ -154,18 +154,18 @@ export default {
 
             <div class="message-show-box">
               <form @submit.prevent="sendForm" action="" method="POST">
-              <input name="name" id="name"  v-model="name" placeholder="Inserisci la tua Nome" type="text">
-              <p class="error" v-if="errors.name">
+              <input name="name" id="name"  v-model="name" placeholder="Nome" type="text">
+              <!-- <p class="error" v-if="errors.name">
                 {{ errors.name[0] }}
-              </p>
-              <input  name="email" id="email" v-model="email" placeholder="Inserisci la tua mail" type="text">
-              <p class="error" v-if="errors.email">
+              </p> -->
+              <input  name="email" id="email" v-model="email" placeholder="Email" type="text">
+              <!-- <p class="error" v-if="errors.email">
                 {{ errors.email[0] }}
-              </p>
-              <textarea name="message" id="message" v-model="message" placeholder="Inserisci le domande per il proprietario" cols="30" rows="10"></textarea>
-              <p class="error" v-if="errors.message">
+              </p> -->
+              <textarea name="message" id="message" v-model="message" placeholder="Messaggio" cols="30" rows="10"></textarea>
+              <!-- <p class="error" v-if="errors.message">
                   {{ errors.message[0] }}
-              </p>
+              </p> -->
               <a class="our-btn" href="">Invia Email</a>
             </form>
             </div>
@@ -258,6 +258,10 @@ export default {
   background-color: $greybg;
   box-shadow: 0px 5px 5px #827b7b;
 
+  form{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
 
   & > *{
     margin-bottom: 1em;
@@ -266,16 +270,20 @@ export default {
   input{
    padding: .5em;
    font-size: 1rem;
+   font-weight: 200;
    font-family: "Josefin Sans", sans-serif;
-
-   width: 80%;
-   text-align: center;
+    border-radius: 15px;
+  
+   width: 100%;
+  //  text-align: center;
     margin: 0 auto 1em;
     border: none;
     background-color: white;
   }
   textarea{
    border: none;
+   font-weight: 200;
+
    padding: 1em .5em;
    font-family: "Josefin Sans", sans-serif;
    font-size: 1rem;
@@ -290,6 +298,7 @@ export default {
     border: 1px solid red;
     width: 8em;
   }
+}
 }
 }
 </style>
