@@ -244,8 +244,14 @@ export default {
       height: 17em;
       width: 100%;
       border-radius: 20px;
-      box-shadow: 0px 5px 5px #827b7b;
-    
+      // box-shadow: 0px 5px 5px #827b7b;
+      transition: all 200ms;
+
+      &:hover{
+        box-shadow: 0px 5px 5px #827b7b;
+      transition: all 200ms;
+
+      }
     }
 .message-show-box{
   display: flex;
@@ -258,11 +264,11 @@ export default {
   background-color: $greybg;
 transition: all 200ms;
 
-&:hover{
-  box-shadow: 0px 5px 5px #827b7b;
-transition: all 200ms;
+      &:hover{
+        box-shadow: 0px 5px 5px #827b7b;
+      transition: all 200ms;
 
-}
+      }
   form{
     display: flex;
     flex-direction: column;
