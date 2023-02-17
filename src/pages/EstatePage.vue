@@ -171,22 +171,18 @@ export default {
   <div class="container">
     <h1>{{ estate.title }}</h1>
     <div class="estate-show-img">
-      <!-- <img :src="`http://127.0.0.1:8000/storage/${estate.cover_img}`" alt="" srcset="">
-      <img v-show="estate.images" v-for="img in estate.images" :src="`http://127.0.0.1:8000/storage/${img.path}`" alt=""
-        srcset="">
-      <div id="image-track" data-mouse-down-at="0" data-prev-percentage="0"></div> -->
       <section id="slider-2">
-        <div class="container wide">
+        <div class="wide">
             <div class="swiper" id="swiper-2">
                 <div class="swiper-wrapper">
-                  <div class="swiper-slide">
+                  <div v-if="estate.cover_img" class="swiper-slide">
                     <figure >
                       
                       <img :src="`http://127.0.0.1:8000/storage/${estate.cover_img}`">
                       
                     </figure>
                   </div> 
-                  <div  v-for="(img, index) in estate.images" class="swiper-slide" >
+                  <div  v-show="estate.images" v-for="(img, index) in estate.images" class="swiper-slide" >
                     <figure >
                       
                       <img :id="index" :src="`http://127.0.0.1:8000/storage/${img.path}`">
@@ -270,16 +266,29 @@ export default {
 
 
   /* Swiper */
+.swiper{
+  padding-bottom: 2em;
 
+}
+
+figure{
+  padding-bottom: 3em;
+}
   .swiper-wrapper{
     width: 100%;
     position: relative;
+   
   }
 .swiper-slide img {
     display: block;
-    width: 700px;
-    height: 20rem;
+    width: 800px;
+    height: 25rem;
     object-fit: cover;
+    border-radius: 15px;
+  box-shadow: 0px 10px 5px #827b7b;
+
+    
+
 }
 
 .swiper-slide figure {
@@ -298,6 +307,7 @@ export default {
     width: auto;
     height: auto;
     object-fit: contain;
+
 }
 
 #swiper-1 .swiper-pagination {
