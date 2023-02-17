@@ -125,8 +125,7 @@ export default {
 
         setTimeout(() => {
           this.processing = false;
-   
-  }, 1000);
+          }, 1000);
 
 
 
@@ -162,15 +161,15 @@ export default {
 
         <div class="message-show-box">
           <form @submit.prevent="sendForm()" action="" method="POST">
-            <input name="name" id="name" v-model="name" placeholder="Nome" type="text">
+            <input name="name" id="name" required v-model="name" placeholder="Nome" type="text">
             <!-- <p class="error" v-if="errors.name">
                                 {{ errors.name[0] }}
                               </p> -->
-            <input name="email" id="email" v-model="email" placeholder="Email" type="text">
+            <input name="email" id="email" required v-model="email" placeholder="Email" type="text">
             <!-- <p class="error" v-if="errors.email">
                                 {{ errors.email[0] }}
                               </p> -->
-            <textarea name="message" id="message" v-model="message" placeholder="Messaggio" cols="30"
+            <textarea name="message" id="message"  v-model="message" placeholder="Messaggio" cols="30"
               rows="10"></textarea>
             <!-- <p class="error" v-if="errors.message">
                                   {{ errors.message[0] }}
