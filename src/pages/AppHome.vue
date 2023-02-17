@@ -69,7 +69,7 @@ export default {
     <div class="container">
       
           <div class="search">
-            <input type="text" name="" id="" v-model="store.startingCity" placeholder="Inserisci una città" @keyup.enter="goToAdvanced()">
+            <input type="text" name="" id="" v-model="store.startingCity" placeholder="Ovunque" @keyup.enter="goToAdvanced()">
               <i @click="goToAdvanced()"  class="fa-solid fa-magnifying-glass"></i>
           </div> 
 
@@ -124,6 +124,13 @@ export default {
    transition: all 300ms;
    box-shadow:  10px 10px 20px #b3c9d3;
 
+
+   i{
+    transition: all 200ms;
+      color: $red;
+      background-color: white;
+   }
+
     
   //   i{
   //  transition: all 300ms;
@@ -150,7 +157,18 @@ export default {
 
     i{
       font-size: 1.3rem;
-      color: $red ;
+      background-color: $red;
+      color: white;
+      padding: .4em;
+      border-radius: 50%;
+      transition: all 200ms;
+
+      &:hover{
+      transition: all 200ms;
+      color: $red;
+      background-color: white;
+
+      }
     }
 
     // @media screen and (max-width: 500px) {
