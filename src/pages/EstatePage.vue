@@ -295,7 +295,7 @@ export default {
         font-weight: 200;
         font-family: "Josefin Sans", sans-serif;
         border-radius: 15px;
-        color: black;
+        color: black !important;
 
         width: 100%;
         //  text-align: center;
@@ -314,7 +314,7 @@ export default {
         background-color: white;
         width: 100%;
         max-width: 100%;
-        color: black;
+        color: black !important;
 
       }
 
