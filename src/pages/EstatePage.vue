@@ -30,7 +30,7 @@ export default {
     spaceBetween: 24,
     pagination: {
         el: ("#swiper-2 .swiper-custom-pagination"),
-        clickable: true,
+        clickable: false,
         // renderBullet: function (index, className) {
         // return `<div class=${className}>
         //     <span class="number">${index + 1}</span>
@@ -52,7 +52,7 @@ export default {
             slidesPerView: 1.5
         },
         1400: {
-            slidesPerView: 3
+            slidesPerView: 1.5
         }
     }
 });
