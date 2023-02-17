@@ -281,7 +281,7 @@ figure{
   }
 .swiper-slide img {
     display: block;
-    width: 800px;
+    width: 900px;
     height: 25rem;
     object-fit: cover;
     border-radius: 15px;
@@ -340,15 +340,7 @@ figure{
 }
 
 
-@media screen and (max-width: 800px) {
-    .swiper-slide img {
-        height: 20rem;
-    }
-    .swiper-custom-nav {
-        display: none;
-    }
-}
-// }
+
 
 .estate-show-txt {
   padding-top: 2rem;
