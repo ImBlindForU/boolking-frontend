@@ -17,7 +17,7 @@ export default {
       filteredServices: [],
       filteredStreet: "",
       filteredCity: '',
-      distance: null,
+      distance: 15,
       rooms: null,
       beds: null,
       map: null,
@@ -180,11 +180,21 @@ export default {
       <div class="container">
         <form class="search" >
             <div class="addressSearch">
-                <input type="text" name="address" v-model="filteredStreet" placeholder="Inserisci un indirizzo">
-                <input type="text" name="city" v-model="filteredCity" placeholder="Inserisci una città">
-                <input type="number" name="distance" v-model="distance" placeholder="Distanza *" required >
+                <input type="text" name="address" v-model="filteredStreet" placeholder="Indirizzo">
+                <div class="mini-inputs">
+
+                <input type="text" name="city" v-model="filteredCity" placeholder="Città">
+                
                 <input type="number" name="room_number" v-model="rooms" placeholder="Stanze" required >
                 <input type="number" name="bed_number" v-model="beds" placeholder="Letti" required >
+              </div>
+
+              <div class="slidecontainer">
+                <input type="range"  name="distance" v-model="distance" min="0" max="30"  class="slider" >
+                <span>{{ distance }} km</span>
+              </div>
+
+                <!-- <input type="number" name="distance" v-model="distance" placeholder="Distanza *" required > -->
 
 
             </div>
@@ -246,14 +256,38 @@ export default {
         padding: 1em .5em;
         @include my-flex(column, start);
         transition: all 300ms;
+
+        &:hover{
         box-shadow: 0px 10px 10px #827b7b;
+          transition: all 200ms;
+        }
 
-
+  
         .addressSearch{
-            @include my-flex(row, center);
+            @include my-flex(column, center);
             flex-wrap: wrap;
+            width: 80%;
             gap: .5em;
             margin-bottom: 1em;
+            .mini-inputs{
+              @include my-flex(row, space-between);
+              width: 100%;
+              gap: .5em;
+                  input{
+                      width: calc(100% / 3  - .5em) !important;
+                  }
+
+                  @media screen and (max-width: 500px) {
+                      @include my-flex(column, space-between);
+
+                      input{
+                      width: 100% !important;
+                  }
+                   }
+
+              
+                }
+
 
             input{
                 padding: .5em 1em;
@@ -275,6 +309,70 @@ export default {
                    }
 
                 }
+            }
+
+
+            .slidecontainer {
+                  width: 100%;
+
+
+                  
+              text-align: center; /* Specified height */
+                  
+                  & > *{
+                    margin-bottom: .5em;
+                  }
+
+                  span{
+                    text-align: center;
+                    display: block;
+                    font-weight: 200;
+                  }
+              }
+
+            /* The slider itself */
+            .slider {
+              -webkit-appearance: none;  /* Override default CSS styles */
+              appearance: none;
+              width: 60%;
+              min-width: 5em; /* Full-width */
+              max-width: 25em; /* Full-width */
+              margin: .5em auto;
+              height: 5px;
+              background: #d3d3d3; /* Grey background */
+              outline: none; /* Remove outline */
+              opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+              -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+              transition: opacity .2s;
+              padding: 0;
+
+
+              input{
+                width: 80%;
+              }
+            }
+
+            /* Mouse-over effects */
+            .slider:hover {
+              opacity: 1; /* Fully shown on mouse-over */
+            }
+
+            /* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+            .slider::-webkit-slider-thumb {
+              -webkit-appearance: none; /* Override default look */
+              appearance: none;
+              width: 15px; /* Set a specific slider handle width */
+              height: 15px; /* Slider handle height */
+              background: $red;
+              border-radius: 50%; /* Green background */
+              cursor: pointer; /* Cursor on hover */
+            }
+
+            .slider::-moz-range-thumb {
+              width: 10px; /* Set a specific slider handle width */
+              height: 10px; /* Slider handle height */
+              background: $red; /* Green background */
+              cursor: pointer; /* Cursor on hover */
             }
         }
         .services{
