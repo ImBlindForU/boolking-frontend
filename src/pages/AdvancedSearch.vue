@@ -451,9 +451,9 @@ export default {
                     content: '';
                     display: block;
                     position: absolute;
-                    top: 4px;
+                    top: 3px;
                     left: 1px;
-                    right: 0.2px;
+                    right: 0px;
                     width: 9.2px;
                     height: 9px;
                     border: solid $red;
