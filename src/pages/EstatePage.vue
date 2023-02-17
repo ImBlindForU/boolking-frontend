@@ -126,7 +126,7 @@ export default {
         setTimeout(() => {
           this.processing = false;
    
-  }, 3000);
+  }, 1000);
 
 
 
