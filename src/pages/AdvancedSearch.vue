@@ -317,7 +317,7 @@ export default {
 
 
                   
-              text-align: center; /* Specified height */
+                  text-align: center; /* Specified height */
                   
                   & > *{
                     margin-bottom: .5em;
