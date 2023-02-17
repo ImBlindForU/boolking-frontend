@@ -44,6 +44,7 @@ export default {
 
 <template>
  <div  v-if="estate.is_visible" class="estate-card ">
+        <div v-show="estate.price" class="price">€{{ estate.price }}</div>
         <div class="estate-img">
             <img  :src="`http://127.0.0.1:8000/storage/${estate.cover_img}`" alt="" srcset="">
             <img  v-show="estate.images" v-for="img in estate.images"  :src="`http://127.0.0.1:8000/storage/${img.path}`" draggable="false" alt="" srcset="">
@@ -54,7 +55,7 @@ export default {
                 <h5>{{ estate.title }}</h5>
                 <p>Tipologia: {{ estate.type }}</p>
                 <p>&#x33A1;: {{ estate.mq }}</p>
-                <p>Prezzo: {{ estate.price }}</p>
+                <!-- <p>Prezzo: {{ estate.price }}</p> -->
               </div>
               <router-link :to="{name: 'estate-page', params: {slug: estate.slug}}" class="our-btn">Visualizza</router-link>
         </div>
@@ -63,7 +64,7 @@ export default {
 
 <style lang="scss" scoped>
  .estate-card{
-
+  position: relative;
   /* width */
 ::-webkit-scrollbar {
   height: 5px;
@@ -94,8 +95,8 @@ export default {
 }
 
 
-  opacity: 0;
-  height: 350px;
+           opacity: 0;
+           height: 350px;
            border: 1px solid #c1baba;
            border-radius: 15px;
            overflow: hidden;
@@ -105,6 +106,22 @@ export default {
            
            // justify-content: center;
            // align-items: center;
+
+           .price{
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: fit-content;
+            background-color: #ff5a60;
+            text-align: center;
+            border-radius: 0 10px 0 20px;
+            height: 3em;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            padding: .3em;
+           }
            .estate-img{
                width: 100%;
                box-shadow:  20px 20px 60px #b3c9d3,
