@@ -22,18 +22,18 @@ export default {
   created() {
     this.callApiEstate();
   },
-  mounted(){
-      
+  mounted() {
+
   },
   methods: {
-    callApiEstate(){
+    callApiEstate() {
       const currentSlug = this.$route.params.slug;
       axios.get(this.store.backEndURL + "/" + currentSlug).then(resp => {
-        if (resp.data.success){
+        if (resp.data.success) {
           this.estate = resp.data.results;
           console.log(this.estate);
-        }else {
-          this.$router.push({name:'Not-Found'})
+        } else {
+          this.$router.push({ name: 'Not-Found' })
         }
 
         this.initializeMap();
@@ -41,275 +41,290 @@ export default {
       })
     },
     initializeMap() {
-            // this.$refs.mapRef.innerHTML = ""
-            let center = [];
+      // this.$refs.mapRef.innerHTML = ""
+      let center = [];
 
-              if(this.estate){
-                console.log(this.estate);
-                center = [this.estate.address.long, this.estate.address.lat]
-              } else {
-                center = [12.4964, 41.9028]
-              }
+      if (this.estate) {
+        console.log(this.estate);
+        center = [this.estate.address.long, this.estate.address.lat]
+      } else {
+        center = [12.4964, 41.9028]
+      }
 
-              const map = tt.map({
-                key: this.KEY,
-                container: this.$refs.mapRef,
-                center: center,
-                zoom: 9
-              })
-
-
-              // this.allEstates.forEach(estate => {
-               const markerElement = document.createElement("div")
-                markerElement.id = "marker"
-                const logo = new URL("../assets/marker.png", import.meta.url).href
-                markerElement.style.backgroundImage = `url(${logo})`
-                markerElement.style.width = "30px"
-                markerElement.style.padding = ".5em"
-
-                markerElement.style.height = "30px"
-                markerElement.style.backgroundSize = "cover"
-                markerElement.style.borderRadius= "20px"
-               const marker = new tt.Marker({ element: markerElement, anchor: "center"})
-                   .setLngLat([this.estate.address.long, this.estate.address.lat])
-                   .addTo(map);
-                   const popupOffsets = {
-                         top: [0, 0],
-                         bottom: [0, -15],
-                         "bottom-right": [0, -70],
-                         "bottom-left": [0, -70],
-                         left: [25, -35],
-                         right: [-25, -35],
-                       }
+      const map = tt.map({
+        key: this.KEY,
+        container: this.$refs.mapRef,
+        center: center,
+        zoom: 9
+      })
 
 
-                   //custom popup
-                   const customPopUp = document.createElement("div")
-                   customPopUp.id = "my-pop-up"
-                   customPopUp.innerHTML = `<p> ${this.estate.title} </br> ${this.estate.price ? this.estate.price : "Non specificato"} </p>`
-                   customPopUp.style.color = "black"
-                   customPopUp.style.width = "150px"
+      // this.allEstates.forEach(estate => {
+      const markerElement = document.createElement("div")
+      markerElement.id = "marker"
+      const logo = new URL("../assets/marker.png", import.meta.url).href
+      markerElement.style.backgroundImage = `url(${logo})`
+      markerElement.style.width = "30px"
+      markerElement.style.padding = ".5em"
 
-                   // const popup = new tt.Popup({ offset: popupOffsets, closeOnMove: true }).setDOMContent(customPopUp)
-                   const popup = new tt.Popup({offset: popupOffsets, closeOnMove: true}).setDOMContent(customPopUp)
+      markerElement.style.height = "30px"
+      markerElement.style.backgroundSize = "cover"
+      markerElement.style.borderRadius = "20px"
+      const marker = new tt.Marker({ element: markerElement, anchor: "center" })
+        .setLngLat([this.estate.address.long, this.estate.address.lat])
+        .addTo(map);
+      const popupOffsets = {
+        top: [0, 0],
+        bottom: [0, -15],
+        "bottom-right": [0, -70],
+        "bottom-left": [0, -70],
+        left: [25, -35],
+        right: [-25, -35],
+      }
 
-                 marker.setPopup(popup)
-            //  });
+
+      //custom popup
+      const customPopUp = document.createElement("div")
+      customPopUp.id = "my-pop-up"
+      customPopUp.innerHTML = `<p> ${this.estate.title} </br> ${this.estate.price ? this.estate.price : "Non specificato"} </p>`
+      customPopUp.style.color = "black"
+      customPopUp.style.width = "150px"
+
+      // const popup = new tt.Popup({ offset: popupOffsets, closeOnMove: true }).setDOMContent(customPopUp)
+      const popup = new tt.Popup({ offset: popupOffsets, closeOnMove: true }).setDOMContent(customPopUp)
+
+      marker.setPopup(popup)
+      //  });
 
 
 
 
-        },
-
-        sendForm(){
-            // this.loading = true;
-
-            const data = {
-                name: this.name,
-                email: this.email,
-                message: this.message
-            }
-            axios.post(`${this.store.backEndURL}/api/leads`, data).then(resp =>{
-                this.success = resp.data.success;
-
-                if (this.success) {
-                    this.name = "",
-                    this.email = "",
-                    this.message = ""
-                    
-                } else {
-                    this.errors = resp.data.errors
-                }
-                this.loading = false;
-                
-
-            })
-        }
     },
+
+    sendForm() {
+      // this.loading = true;
+
+      const data = {
+        name: this.name,
+        email: this.email,
+        message: this.message,
+        estate_id: this.estate.id,
+      }
+      axios.post(`${this.store.leadsURL}`, data).then(resp => {
+        this.success = resp.data.success;
+
+        if (this.success) {
+          this.name = "",
+            this.email = "",
+            this.message = ""
+
+        } else {
+          this.errors = resp.data.errors
+        }
+        this.loading = false;
+
+
+      })
+    }
+  },
 };
 </script>
 <template>
   <div class="container">
     <h1>{{ estate.title }}</h1>
     <div class="estate-show-img">
-            <img  :src="`http://127.0.0.1:8000/storage/${estate.cover_img}`" alt="" srcset="">
-            <img  v-show="estate.images" v-for="img in estate.images"  :src="`http://127.0.0.1:8000/storage/${img.path}`" alt="" srcset="">
-            <div id="image-track" data-mouse-down-at="0" data-prev-percentage="0"></div>
-        </div>
-        <div class="container-text">
-            <div class="estate-show-txt">
-             
-                  <p> <span>Tipologia:</span> {{ estate.type }}</p>
-                  <p> <span>&#x33A1;:</span> {{ estate.mq }}</p>
-                  <p><span>Prezzo:</span>  {{ estate.price }}</p>
-                  <p><span>Descrizione:</span>  {{ estate.description }}</p>
-                  <p><span>Servizi:</span></p>
-                  <ul id="services">
-                    <li v-for="service in estate.services"> <span><i class="fa-brands fa-airbnb"></i></span>{{ service.name }}</li>
-                  </ul>
-             
-          </div>
-          <div class="additional">
-            <div id='tom-map' ref="mapRef"></div>
+      <img :src="`http://127.0.0.1:8000/storage/${estate.cover_img}`" alt="" srcset="">
+      <img v-show="estate.images" v-for="img in estate.images" :src="`http://127.0.0.1:8000/storage/${img.path}`" alt=""
+        srcset="">
+      <div id="image-track" data-mouse-down-at="0" data-prev-percentage="0"></div>
+    </div>
+    <div class="container-text">
+      <div class="estate-show-txt">
 
-            <div class="message-show-box">
-              <form @submit.prevent="sendForm" action="" method="POST">
-              <input name="name" id="name"  v-model="name" placeholder="Nome" type="text">
-              <!-- <p class="error" v-if="errors.name">
-                {{ errors.name[0] }}
-              </p> -->
-              <input  name="email" id="email" v-model="email" placeholder="Email" type="text">
-              <!-- <p class="error" v-if="errors.email">
-                {{ errors.email[0] }}
-              </p> -->
-              <textarea name="message" id="message" v-model="message" placeholder="Messaggio" cols="30" rows="10"></textarea>
-              <!-- <p class="error" v-if="errors.message">
-                  {{ errors.message[0] }}
-              </p> -->
-              <a class="our-btn" href="">Invia Email</a>
-            </form>
-            </div>
-          </div>
+        <p> <span>Tipologia:</span> {{ estate.type }}</p>
+        <p> <span>&#x33A1;:</span> {{ estate.mq }}</p>
+        <p><span>Prezzo:</span> {{ estate.price }}</p>
+        <p><span>Descrizione:</span> {{ estate.description }}</p>
+        <p><span>Servizi:</span></p>
+        <ul id="services">
+          <li v-for="service in estate.services"> <span><i class="fa-brands fa-airbnb"></i></span>{{ service.name }}</li>
+        </ul>
+
+      </div>
+      <div class="additional">
+        <div id='tom-map' ref="mapRef"></div>
+
+        <div class="message-show-box">
+          <form @submit.prevent="sendForm()" action="" method="POST">
+            <input name="name" id="name" v-model="name" placeholder="Nome" type="text">
+            <!-- <p class="error" v-if="errors.name">
+                                {{ errors.name[0] }}
+                              </p> -->
+            <input name="email" id="email" v-model="email" placeholder="Email" type="text">
+            <!-- <p class="error" v-if="errors.email">
+                                {{ errors.email[0] }}
+                              </p> -->
+            <textarea name="message" id="message" v-model="message" placeholder="Messaggio" cols="30"
+              rows="10"></textarea>
+            <!-- <p class="error" v-if="errors.message">
+                                  {{ errors.message[0] }}
+                              </p> -->
+            <button class="our-btn" type="submit">Invia Email</button>
+          </form>
         </div>
-        
+      </div>
+    </div>
+
   </div>
-  
 </template>
 <style lang="scss" scoped>
 @use "../styles/partials/_mixins" as *;
 @use "../styles/partials/_variables" as *;
 
 
-.container{
+.container {
 
   margin: 2em auto;
   padding-bottom: 8em;
 }
-.estate-show-img{
+
+.estate-show-img {
   display: flex;
   padding-top: 3rem;
 }
-.estate-show-txt{
+
+.estate-show-txt {
   padding-top: 2rem;
   width: 50%;
 
-  p{
+  p {
     font-weight: 200;
-     
-    span{
+
+    span {
       font-weight: 500;
       color: $red;
     }
   }
 
-  #services{
-      margin: .3em .5em;
-      @include my-flex(column, flex-start);
-      height: 200px;
-      flex-wrap: wrap;
-      align-items: flex-start;
-      @media screen and (max-width: 500px) {
-                  flex-wrap: nowrap;
-                 }
-      li{
-        margin-left: .5em !important;
+  #services {
+    margin: .3em .5em;
+    @include my-flex(column, flex-start);
+    height: 200px;
+    flex-wrap: wrap;
+    align-items: flex-start;
 
-        span{
-          margin-right: .3em;
-        }
+    @media screen and (max-width: 500px) {
+      flex-wrap: nowrap;
+    }
+
+    li {
+      margin-left: .5em !important;
+
+      span {
+        margin-right: .3em;
       }
-    
+    }
+
   }
 }
 
-.container-text{
+.container-text {
   margin-top: 2em;
   display: flex;
   justify-content: space-between;
 
 
   @media screen and (max-width: 500px) {
-                  flex-wrap: wrap;
-                  }
+    flex-wrap: wrap;
+  }
 }
 
-.additional{
+.additional {
   @include my-flex(column, center);
   width: 40%;
+
   @media screen and (max-width: 500px) {
-                  width: 100%;
-                  }
-#tom-map {
-      margin: 0;
-      height: 17em;
-      width: 100%;
-      border-radius: 20px;
-      // box-shadow: 0px 5px 5px #827b7b;
+    width: 100%;
+  }
+
+  #tom-map {
+    margin: 0;
+    height: 17em;
+    width: 100%;
+    border-radius: 20px;
+    // box-shadow: 0px 5px 5px #827b7b;
+    transition: all 200ms;
+
+    &:hover {
+      box-shadow: 0px 5px 5px #827b7b;
       transition: all 200ms;
 
-      &:hover{
-        box-shadow: 0px 5px 5px #827b7b;
-      transition: all 200ms;
-
-      }
     }
-.message-show-box{
-  display: flex;
-  flex-direction: column;
-  // border: 1px solid $red;
-  margin: 3em auto;
-  width: 100%;
-  border-radius: 20px;
-  padding: 1em;
-  background-color: $greybg;
-transition: all 200ms;
+  }
 
-      &:hover{
-        box-shadow: 0px 5px 5px #827b7b;
-      transition: all 200ms;
-
-      }
-  form{
+  .message-show-box {
     display: flex;
     flex-direction: column;
+    // border: 1px solid $red;
+    margin: 3em auto;
     width: 100%;
-
-  & > *{
-    margin-bottom: 1em;
     border-radius: 20px;
-  }
-  input{
-   padding: .5em;
-   font-size: 1rem;
-   font-weight: 200;
-   font-family: "Josefin Sans", sans-serif;
-    border-radius: 15px;
-  
-   width: 100%;
-  //  text-align: center;
-    margin: 0 auto 1em;
-    border: none;
-    background-color: white;
-  }
-  textarea{
-   border: none;
-   font-weight: 200;
+    padding: 1em;
+    background-color: $greybg;
+    transition: all 200ms;
 
-   padding: 1em .5em;
-   font-family: "Josefin Sans", sans-serif;
-   font-size: 1rem;
-   background-color: white;
-   width: 100%;
-   max-width: 100%;
+    &:hover {
+      box-shadow: 0px 5px 5px #827b7b;
+      transition: all 200ms;
 
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+
+      &>* {
+        margin-bottom: 1em;
+        border-radius: 20px;
+      }
+
+      input {
+        padding: .5em;
+        font-size: 1rem;
+        font-weight: 200;
+        font-family: "Josefin Sans", sans-serif;
+        border-radius: 15px;
+        color: black;
+
+        width: 100%;
+        //  text-align: center;
+        margin: 0 auto 1em;
+        border: none;
+        background-color: white;
+      }
+
+      textarea {
+        border: none;
+        font-weight: 200;
+
+        padding: 1em .5em;
+        font-family: "Josefin Sans", sans-serif;
+        font-size: 1rem;
+        background-color: white;
+        width: 100%;
+        max-width: 100%;
+        color: black;
+
+      }
+
+      a {
+        margin: 0 auto;
+        text-align: center;
+        border: 1px solid red;
+        width: 8em;
+      }
+    }
   }
-  a{
-   margin: 0 auto;
-    text-align: center;
-    border: 1px solid red;
-    width: 8em;
-  }
-}
-}
 }
 </style>
