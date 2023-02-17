@@ -13,6 +13,9 @@ export default {
       estate: {},
       map: null,
       KEY: "e3ENGW4vH2FBakpfksCRV16OTNwyZh0e",
+      name: "",
+      email: "",
+      message: ""
 
     };
   },
@@ -97,6 +100,31 @@ export default {
 
 
         },
+
+        sendForm(){
+            // this.loading = true;
+
+            const data = {
+                name: this.name,
+                email: this.email,
+                message: this.message
+            }
+            axios.post(`${this.store.backEndURL}/api/leads`, data).then(resp =>{
+                this.success = resp.data.success;
+
+                if (this.success) {
+                    this.name = "",
+                    this.email = "",
+                    this.message = ""
+                    
+                } else {
+                    this.errors = resp.data.errors
+                }
+                this.loading = false;
+                
+
+            })
+        }
     },
 };
 </script>
@@ -125,9 +153,21 @@ export default {
             <div id='tom-map' ref="mapRef"></div>
 
             <div class="message-show-box">
-              <input placeholder="Inserisci la tua mail" type="text">
-              <textarea placeholder="Inserisci le domande per il proprietario" name="" id="" cols="30" rows="10"></textarea>
+              <form @submit.prevent="sendForm" action="" method="POST">
+              <input name="name" id="name"  v-model="name" placeholder="Inserisci la tua Nome" type="text">
+              <p class="error" v-if="errors.name">
+                {{ errors.name[0] }}
+              </p>
+              <input  name="email" id="email" v-model="email" placeholder="Inserisci la tua mail" type="text">
+              <p class="error" v-if="errors.email">
+                {{ errors.email[0] }}
+              </p>
+              <textarea name="message" id="message" v-model="message" placeholder="Inserisci le domande per il proprietario" cols="30" rows="10"></textarea>
+              <p class="error" v-if="errors.message">
+                  {{ errors.message[0] }}
+              </p>
               <a class="our-btn" href="">Invia Email</a>
+            </form>
             </div>
           </div>
         </div>
