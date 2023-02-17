@@ -74,6 +74,7 @@ export default {
     <div class="container">
       <div class="logo">
         <img src="../assets/logo.png" alt="Boolking" />
+        <span>Boolking</span>
       </div>
 
       <nav>
@@ -136,10 +137,18 @@ header {
     height: 40px;
     box-shadow: 1px 1px 5px rgb(193, 185, 185);
 
+    span{
+      display: none;
+    }
+
     &:hover {
       background-color: $white;
       filter: blur(0);
       height: 70px;
+
+      span{
+      display: block;
+    }
     }
 
     .container {
@@ -159,6 +168,10 @@ header {
       width: 2em;
       transition: 500ms;
       cursor: pointer;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: .5em;
       &:hover {
         transform: scale(1.1);
         transition: 500ms;
@@ -205,6 +218,12 @@ header {
 
 @media screen and (max-width: 700px) {
   header {
+
+    .logo{
+      span{
+        display: none;
+      }
+    }
     .container {
       nav {
         display: none;
