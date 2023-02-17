@@ -18,6 +18,8 @@ export default {
       filteredStreet: "",
       filteredCity: '',
       distance: null,
+      rooms: null,
+      beds: null,
       map: null,
       allCoordinates: [],
       KEY: "e3ENGW4vH2FBakpfksCRV16OTNwyZh0e",
@@ -60,8 +62,18 @@ export default {
       if(this.filteredCity){
         option.params.city = this.filteredCity
       } else{
-
         option.params.city = null
+      }
+
+      if (this.rooms) {
+        option.params.room_number = this.rooms
+      } else {
+        option.params.room_number = null
+      }
+      if (this.beds) {
+        option.params.bed_number = this.beds
+      } else {
+        option.params.bed_number = null
       }
 
 
@@ -171,6 +183,10 @@ export default {
                 <input type="text" name="address" v-model="filteredStreet" placeholder="Inserisci un indirizzo">
                 <input type="text" name="city" v-model="filteredCity" placeholder="Inserisci una città">
                 <input type="number" name="distance" v-model="distance" placeholder="Distanza *" required >
+                <input type="number" name="room_number" v-model="rooms" placeholder="Stanze" required >
+                <input type="number" name="bed_number" v-model="beds" placeholder="Letti" required >
+
+
             </div>
             <div class="services">
                 <template v-for="service in store.allServices">
