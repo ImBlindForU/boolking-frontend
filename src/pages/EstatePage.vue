@@ -128,9 +128,6 @@ export default {
       marker.setPopup(popup)
       //  });
 
-
-
-
     },
 
     sendForm() {
@@ -165,7 +162,16 @@ export default {
 
 
   },
-};
+  computed: {
+      imgPath(){
+        if(this.estate.cover_img.includes('cover/')){
+          return `http://127.0.0.1:8000/storage/${this.estate.cover_img}`
+        } else {
+          return this.estate.cover_img
+        }
+    }
+  }
+}
 </script>
 <template>
   <div class="container">
@@ -178,7 +184,7 @@ export default {
                   <div v-if="estate.cover_img" class="swiper-slide">
                     <figure >
                       
-                      <img :src="`http://127.0.0.1:8000/storage/${estate.cover_img}`">
+                      <img :src="imgPath">
                       
                     </figure>
                   </div> 

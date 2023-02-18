@@ -13,6 +13,13 @@ export default {
     };
   },
   computed: {
+    imgPath(){
+      if(this.estate.cover_img.includes('cover/')){
+        return `http://127.0.0.1:8000/storage/${this.estate.cover_img}`
+      } else {
+        return this.estate.cover_img
+      }
+    }
   },
   methods: {   
     getImgPath(imgName){
@@ -37,7 +44,6 @@ export default {
       // x: 0,
       stagger: .4
     })
-
   }
 };
 </script>
@@ -46,7 +52,7 @@ export default {
  <div  v-if="estate.is_visible" class="estate-card ">
         <div v-show="estate.price" class="price">€{{ estate.price }}</div>
         <div class="estate-img">
-            <img  :src="`http://127.0.0.1:8000/storage/${estate.cover_img}`" alt="" srcset="">
+            <img  :src="imgPath" alt="" srcset="">
             <img  v-show="estate.images" v-for="img in estate.images"  :src="`http://127.0.0.1:8000/storage/${img.path}`" draggable="false" alt="" srcset="">
 
         </div>
