@@ -418,7 +418,7 @@ export default {
                     position: relative;
                     cursor: pointer;
                     width: max-content;
-                    min-width: 150px;
+                    min-width: 170px;
                     color: $red;
 
                     @media screen and (max-width: 670px) {
@@ -451,11 +451,12 @@ export default {
                     content: '';
                     display: block;
                     position: absolute;
-                    top: 3px;
+                    top: 4px;
                     left: 1px;
+                    bottom: 0px;
                     right: 0px;
-                    width: 9.2px;
-                    height: 9px;
+                    width: 14px;
+                    height: 14px;
                     border: solid $red;
                     background-color: $red;
                     border-radius: 50%;
@@ -465,7 +466,7 @@ export default {
                       left: 1px;
                   }
                     @media screen and (min-width: 1200px) {
-                      top: 2px;
+                      // top: 2px;
                       left: 1px;
                   }
                   }
