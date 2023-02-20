@@ -236,7 +236,7 @@ export default {
       <div class="estate-show-txt">
 
         <p> <span>Tipologia:</span> {{ estate.type }}</p>
-        <p> <span>&#x33A1;:</span> {{ estate.mq }}</p>
+        <p> <span>Metri Quadri:</span> {{ estate.mq }}&#x33A1;</p>
         <p v-if="estate.price"><span>Prezzo:</span> {{ estate.price }}</p>
         <p v-if="estate.description" ><span>Descrizione:</span> {{ estate.description }}</p>
         <div v-if="loader">
@@ -381,6 +381,7 @@ figure {
 
   p {
     font-weight: 200;
+    margin-bottom: .5em;
 
     span {
       font-weight: 500;

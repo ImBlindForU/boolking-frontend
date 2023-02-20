@@ -169,13 +169,16 @@ export default {
     justify-content: space-between;
     height: calc(100% - 200px);
 
+    
     h5 {
       font-size: 1rem;
+      margin-bottom: .5em !important;
+
     }
 
     p {
       width: 100%;
-      margin-bottom: .1em !important;
+      margin-bottom: .5em !important;
       font-size: .8rem;
 
     }
