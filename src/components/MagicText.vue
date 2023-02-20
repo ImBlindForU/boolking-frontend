@@ -154,7 +154,7 @@ h1>.magic>.magic-text {
     animation: background-pan 3s linear infinite;
     background: linear-gradient(to right,
     #ff5a60,
-    #0000);
+    #000000);
             /* var(--pink),
             var(--purple)); */
     background-size: 200%;
