@@ -72,10 +72,12 @@ export default {
 <template>
   <header :class="{ faded: scrollPosition > 50 }">
     <div class="container">
-      <div class="logo">
+
+      <router-link :to="{ name: 'home' }" class="logo">
         <img src="../assets/logo.png" alt="Boolking" />
         <span>Boolking</span>
-      </div>
+      </router-link>
+
 
       <nav>
         <ul>
@@ -93,7 +95,7 @@ export default {
       <div class="ham-nav">
 
         <!-- <i v-if="!hamMenu" @click="showMenu" class="fa-solid fa-bars"></i>
-            <i v-else @click="showMenu" class="fa-solid fa-xmark"></i> -->
+                  <i v-else @click="showMenu" class="fa-solid fa-xmark"></i> -->
         <i class="fa-solid" :class="hamMenu ? 'fa-xmark' : 'fa-bars'" @click="showMenu"></i>
         <ul v-show="hamMenu">
           <HeaderNav v-for="(item, index) in navHeaderList" :key="index" :NavItems="item"></HeaderNav>
