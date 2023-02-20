@@ -27,11 +27,11 @@ export default {
 
   },
   mounted() {
-    this.getClientIp().then(ip => {
-          this.store.ipAddress = ip;
-        }).catch(error => {
-          console.error(error);
-        });   
+    // this.getClientIp().then(ip => {
+    //       this.store.ipAddress = ip;
+    //     }).catch(error => {
+    //       console.error(error);
+    //     });   
 
   },
   methods: {
@@ -94,23 +94,23 @@ export default {
       })
     },
 
-    getClientIp(){
-      return new Promise((resolve, reject) => {
-      const xhr = new XMLHttpRequest();
-      xhr.open('GET', 'https://api.ipify.org/?format=json');
-      xhr.onload = () => {
-        if (xhr.status === 200) {
-          resolve(JSON.parse(xhr.responseText).ip);
-        } else {
-          reject('Failed to get IP address');
-        }
-      };
-      xhr.onerror = () => {
-        reject('Failed to get IP address');
-      };
-      xhr.send();
-    });
-    },
+    // getClientIp(){
+    //   return new Promise((resolve, reject) => {
+    //   const xhr = new XMLHttpRequest();
+    //   xhr.open('GET', 'https://api.ipify.org/?format=json');
+    //   xhr.onload = () => {
+    //     if (xhr.status === 200) {
+    //       resolve(JSON.parse(xhr.responseText).ip);
+    //     } else {
+    //       reject('Failed to get IP address');
+    //     }
+    //   };
+    //   xhr.onerror = () => {
+    //     reject('Failed to get IP address');
+    //   };
+    //   xhr.send();
+    // });
+    // },
   },
 };
 </script>
