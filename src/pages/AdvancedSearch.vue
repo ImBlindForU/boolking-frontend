@@ -23,6 +23,9 @@ export default {
       map: null,
       allCoordinates: [],
       KEY: "e3ENGW4vH2FBakpfksCRV16OTNwyZh0e",
+      now: null,
+      // sponsoredEstates: [],
+      unSponsoredEstates: [],
     };
   },
   created() {
