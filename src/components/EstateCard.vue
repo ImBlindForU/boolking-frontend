@@ -167,10 +167,15 @@ export default {
                justify-content: space-between;
               height: calc(100% - 200px);
                
+              h5{
+                font-size: 1rem;
+              }
                
                p{
                  width: 100%;
                    margin-bottom: .1em !important;
+                font-size: .8rem;
+
                }
 
                a,.our-btn{
