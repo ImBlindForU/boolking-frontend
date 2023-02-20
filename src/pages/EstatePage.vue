@@ -17,7 +17,6 @@ export default {
       email: "",
       message: "",
       processing: false,
-
     };
   },
   created() {
@@ -56,6 +55,8 @@ export default {
         }
       }
     });
+
+     
   },
   methods: {
     callApiEstate() {
@@ -63,12 +64,32 @@ export default {
       axios.get(this.store.backEndURL + "/" + currentSlug).then(resp => {
         if (resp.data.success) {
           this.estate = resp.data.results;
-          console.log(this.estate);
+        
+          const options = {
+            guest_ip : this.store.ipAddress,
+            estate_id : this.estate.id,
+          }
+          console.log(this.store.ipAddress);
+        const firstTime = localStorage.getItem("first_time");
+          
+          // if (!firstTime) {
+            axios.post(`${this.store.viewsURL}`, options).then( resp => {
+              console.log(resp.data);
+            })
+            
+          // } else{
+          //   console.log("bho");
+          // }
+         
+
         } else {
           this.$router.push({ name: 'Not-Found' })
         }
 
+
         this.initializeMap();
+        
+
 
       })
     },
@@ -159,6 +180,12 @@ export default {
 
       })
     },
+
+    
+
+    // updateViews(){
+       
+    // }
 
 
   },
