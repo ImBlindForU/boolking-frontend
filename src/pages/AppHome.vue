@@ -10,7 +10,7 @@ export default {
     return {
       welcome: true,
       store,
-     city: "",
+      city: "",
       services: [],
       street: "",
       
