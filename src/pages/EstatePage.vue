@@ -501,7 +501,7 @@ figure {
         transition: all .25s ease;
         width: 80%;
         position: relative;
-        height: 45px;
+        height: 50px;
         overflow: hidden;
       }
 
@@ -559,8 +559,8 @@ figure {
 
       .loading-animate:after {
         content: '';
-        width: 30px;
-        height: 30px;
+        width: 40px;
+        height: 40px;
         border-radius: 50%;
         border: 3px solid transparent;
         border-left: 3px solid #fff;
@@ -570,8 +570,8 @@ figure {
 
       .loading-animate:before {
         content: '';
-        width: 30px;
-        height: 30px;
+        width: 40px;
+        height: 40px;
         border-radius: 50%;
         border: 3px solid transparent;
         border-left: 3px solid #fff;
