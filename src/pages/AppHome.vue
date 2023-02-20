@@ -107,10 +107,11 @@ export default {
           </div> 
           
           
-                <div class="sponsored-container">
+                <div class="cards-container">
                   <EstateCard v-for="estate in sponsoredEstates"
                    :estate="estate" ></EstateCard>
                 </div>
+                <hr>
                 <div class="cards-container ">
 
                           <EstateCard v-for="estate in unSponsoredEstates"
