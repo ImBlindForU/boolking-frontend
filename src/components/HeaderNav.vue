@@ -12,8 +12,6 @@ export default {
   <li>
     <router-link :to="NavItems.routeName">{{ NavItems.label }}</router-link>
   </li>
-
-  
 </template>
 <style lang="scss" scoped>
 @use "../styles/partials/variables" as *;
@@ -51,6 +49,7 @@ li {
     0% {
       height: 0;
     }
+
     100% {
       height: 2px;
     }

@@ -56,7 +56,7 @@ export default {
     showMenu() {
       this.hamMenu = !this.hamMenu;
     },
-    closeMenu(){
+    closeMenu() {
       if (this.hamMenu) {
         console.log("chiuso");
         window.addEventListener("click", this.showMenu())
@@ -79,12 +79,7 @@ export default {
 
       <nav>
         <ul>
-          <HeaderNav
-            v-for="(item, index) in navHeaderList"
-            :key="index"
-            :NavItems="item"
-            
-          >
+          <HeaderNav v-for="(item, index) in navHeaderList" :key="index" :NavItems="item">
           </HeaderNav>
           |
           <li class="external">
@@ -96,16 +91,12 @@ export default {
         </ul>
       </nav>
       <div class="ham-nav">
-        
+
         <!-- <i v-if="!hamMenu" @click="showMenu" class="fa-solid fa-bars"></i>
-        <i v-else @click="showMenu" class="fa-solid fa-xmark"></i> -->
+            <i v-else @click="showMenu" class="fa-solid fa-xmark"></i> -->
         <i class="fa-solid" :class="hamMenu ? 'fa-xmark' : 'fa-bars'" @click="showMenu"></i>
         <ul v-show="hamMenu">
-          <HeaderNav
-            v-for="(item, index) in navHeaderList"
-            :key="index"
-            :NavItems="item"
-          ></HeaderNav>
+          <HeaderNav v-for="(item, index) in navHeaderList" :key="index" :NavItems="item"></HeaderNav>
           <li class="external">
             <a href="http://127.0.0.1:8000/login">Login</a>
           </li>
@@ -137,7 +128,7 @@ header {
     height: 40px;
     box-shadow: 1px 1px 5px rgb(193, 185, 185);
 
-    span{
+    span {
       display: none;
     }
 
@@ -146,9 +137,9 @@ header {
       filter: blur(0);
       height: 70px;
 
-      span{
-      display: block;
-    }
+      span {
+        display: block;
+      }
     }
 
     .container {
@@ -156,6 +147,7 @@ header {
       padding: 0;
     }
   }
+
   .container {
     padding: 1em 0;
     display: flex;
@@ -172,10 +164,12 @@ header {
       flex-direction: row;
       align-items: center;
       gap: .5em;
+
       &:hover {
         transform: scale(1.1);
         transition: 500ms;
       }
+
       img {
         max-width: 100%;
         object-fit: contain;
@@ -200,13 +194,14 @@ header {
         position: relative;
         cursor: pointer;
       }
+
       .external {
         // font-size: .9rem;
         color: $gray;
         text-transform: uppercase;
         font-weight: light;
         font-size: 0.8rem;
-       
+
       }
     }
   }
@@ -219,11 +214,12 @@ header {
 @media screen and (max-width: 700px) {
   header {
 
-    .logo{
-      span{
+    .logo {
+      span {
         display: none;
       }
     }
+
     .container {
       nav {
         display: none;
@@ -236,13 +232,15 @@ header {
         background-color: inherit;
         transition: all 250ms linear;
 
-      
-        i,.fa-bars{
+
+        i,
+        .fa-bars {
           transition: all 250ms linear;
-          
+
         }
 
-        i,.fa-xmark{
+        i,
+        .fa-xmark {
           transition: all 250ms linear;
           transform: rotate(360deg) !important;
         }
@@ -266,20 +264,22 @@ header {
           &:hover {
             background-color: $white;
           }
-          li{
+
+          li {
             transition: all 300ms;
             font-size: .9rem;
             padding: .5em;
-           
+
 
           }
-          li:hover{
+
+          li:hover {
             transform: translateX(10px);
             transition: all 300ms;
-            border-radius: 0  10px;
-            
+            border-radius: 0 10px;
+
           }
-          
+
         }
       }
     }

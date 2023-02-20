@@ -5,7 +5,7 @@ import AppHeader from "./components/AppHeader.vue";
 export default {
   components: {
     AppHeader,
-    
+
   },
   data() {
     return {
@@ -18,7 +18,7 @@ export default {
 <template>
   <AppHeader></AppHeader>
   <main>
-    
+
     <router-view></router-view>
 
   </main>
@@ -27,7 +27,8 @@ export default {
 <style lang="scss">
 @use "./styles/general.scss" as *;
 @use "./styles/partials/variables" as *;
-main{
+
+main {
   padding: 70px 0 0 0;
   margin-bottom: 2em;
 }
