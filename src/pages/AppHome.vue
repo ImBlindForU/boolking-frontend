@@ -3,9 +3,10 @@ import axios from "axios";
 import {store} from "../store"
 import AppWelcomeAnimation from"../components/AppWelcomeAnimation.vue"
 import EstateCard from "../components/EstateCard.vue"
+import MagicText from "../components/MagicText.vue";
 export default {
   name: "AppMainContent",
-  components: { AppWelcomeAnimation, EstateCard },
+  components: { AppWelcomeAnimation, EstateCard, MagicText },
   data() {
     return {
       welcome: true,
@@ -95,7 +96,7 @@ export default {
     <AppWelcomeAnimation v-if="!welcome"></AppWelcomeAnimation>
   <div class="my-container-fluid">
     
-    <h1>Tutti i nostri alloggi</h1>
+    <!-- <h1>Tutti i nostri alloggi</h1> -->
     
     
     
@@ -107,7 +108,7 @@ export default {
           </div> 
           
           
-                 <h2>In evidenza</h2> 
+                 <MagicText></MagicText>
                 <div class="cards-container">
                   <EstateCard v-for="estate in sponsoredEstates"
                    :estate="estate" ></EstateCard>
