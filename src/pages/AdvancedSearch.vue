@@ -575,4 +575,5 @@ export default {
 h2 {
   margin-left: 2em;
   margin-bottom: 1em;
-}</style>
+}
+</style>

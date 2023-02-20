@@ -169,7 +169,7 @@ export default {
     justify-content: space-between;
     height: calc(100% - 200px);
 
-    
+
     h5 {
       font-size: 1rem;
       margin-bottom: .5em !important;
@@ -216,4 +216,5 @@ export default {
   @media screen and (min-width: 1200px) {
     width: calc(100% / 4 - .5em) !important;
   }
-}</style>
+}
+</style>

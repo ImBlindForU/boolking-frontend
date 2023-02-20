@@ -57,7 +57,7 @@ export default {
       }
     });
 
-     
+
   },
   methods: {
     callApiEstate() {
@@ -67,23 +67,23 @@ export default {
         if (resp.data.success) {
           this.estate = resp.data.results;
           this.loader = !this.loader;
-        
+
           const options = {
-            guest_ip : this.store.ipAddress,
-            estate_id : this.estate.id,
+            guest_ip: this.store.ipAddress,
+            estate_id: this.estate.id,
           }
           console.log(this.store.ipAddress);
-        const firstTime = localStorage.getItem("first_time");
-          
+          const firstTime = localStorage.getItem("first_time");
+
           // if (!firstTime) {
-            axios.post(`${this.store.viewsURL}`, options).then( resp => {
-              console.log(resp.data);
-            })
-            
+          axios.post(`${this.store.viewsURL}`, options).then(resp => {
+            console.log(resp.data);
+          })
+
           // } else{
           //   console.log("bho");
           // }
-         
+
 
         } else {
           this.$router.push({ name: 'Not-Found' })
@@ -91,7 +91,7 @@ export default {
 
 
         this.initializeMap();
-        
+
 
 
       })
@@ -184,10 +184,10 @@ export default {
       })
     },
 
-    
+
 
     // updateViews(){
-       
+
     // }
 
 
@@ -238,15 +238,16 @@ export default {
         <p> <span>Tipologia:</span> {{ estate.type }}</p>
         <p> <span>Metri Quadri:</span> {{ estate.mq }}&#x33A1;</p>
         <p v-if="estate.price"><span>Prezzo:</span> {{ estate.price }}</p>
-        <p v-if="estate.description" ><span>Descrizione:</span> {{ estate.description }}</p>
+        <p v-if="estate.description"><span>Descrizione:</span> {{ estate.description }}</p>
         <div v-if="loader">
-        <div v-if="estate.services.length > 0">
-          <p><span>Servizi:</span></p>
-          <ul id="services">
-            <li v-for="(service, key) in estate.services" :key="key"> <span><i class="fa-brands fa-airbnb"></i></span>{{ service.name }}</li>
-          </ul>
+          <div v-if="estate.services.length > 0">
+            <p><span>Servizi:</span></p>
+            <ul id="services">
+              <li v-for="(service, key) in estate.services" :key="key"> <span><i class="fa-brands fa-airbnb"></i></span>{{
+                service.name }}</li>
+            </ul>
+          </div>
         </div>
-      </div>
 
       </div>
       <div class="additional">
@@ -256,17 +257,17 @@ export default {
           <form @submit.prevent="sendForm()" action="" method="POST">
             <input name="name" id="name" required v-model="name" placeholder="Nome" type="text">
             <!-- <p class="error" v-if="errors.name">
-                                        {{ errors.name[0] }}
-                                      </p> -->
+                                          {{ errors.name[0] }}
+                                        </p> -->
             <input name="email" id="email" required v-model="email" placeholder="Email" type="text">
             <!-- <p class="error" v-if="errors.email">
-                                        {{ errors.email[0] }}
-                                      </p> -->
+                                          {{ errors.email[0] }}
+                                        </p> -->
             <textarea name="message" id="message" v-model="message" placeholder="Messaggio" cols="30"
               rows="10"></textarea>
             <!-- <p class="error" v-if="errors.message">
-                                          {{ errors.message[0] }}
-                                      </p> -->
+                                            {{ errors.message[0] }}
+                                        </p> -->
             <button class="btn" :class="processing ? 'loading' : ''">
               <i class='fa-solid fa-paper-plane'></i>
               <span class="text">
@@ -643,4 +644,5 @@ figure {
   }
 
   // }
-}</style>
+}
+</style>

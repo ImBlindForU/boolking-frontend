@@ -37,7 +37,7 @@ export default {
     if (!firstTime) {
 
       this.welcome = false
-      
+
     }
 
 
@@ -173,7 +173,7 @@ export default {
     text-align: center;
   }
 
-  h2{
+  h2 {
     margin: 0em 2em 1em
   }
 
