@@ -4,12 +4,11 @@ import axios from "axios";
 import {store} from "../store"
 import { ref } from 'vue'
 import tt from '@tomtom-international/web-sdk-maps';
-
-// import AppWelcomeAnimation from"../components/AppWelcomeAnimation.vue"
+import MagicText from "../components/MagicText.vue";
 import EstateCard from "../components/EstateCard.vue"
 export default {
   name: "AdvancedSearch",
-  components: { EstateCard },
+  components: { EstateCard, MagicText },
   data() {
     return {
       store,
@@ -24,11 +23,12 @@ export default {
       allCoordinates: [],
       KEY: "e3ENGW4vH2FBakpfksCRV16OTNwyZh0e",
       now: null,
-      // sponsoredEstates: [],
+      sponsoredEstates: [],
       unSponsoredEstates: [],
     };
   },
   created() {
+    this.now = new Date();
       if (this.store.startingCity) {
         this.filteredCity = this.store.startingCity
       }
@@ -43,9 +43,11 @@ export default {
     
   },
   methods: {
-
+    
     getFilteredEstates(){
-      
+      this.allEstates = [];
+      this.unSponsoredEstates = [];
+      this.sponsoredEstates = [];
       const option = {
                 params: {
                   ...this.filteredServices && {services: this.filteredServices}
@@ -83,14 +85,42 @@ export default {
       axios.get(this.store.backEndURL, option).then(res => {
         if (res.data.success) {
           
-          console.log(res.data.results);
-          this.store.allEstates = res.data.results;
           this.allEstates = res.data.results;
-    
-        } else{
-          this.allEstates = [];
+
+          for (let i = 0; i < this.allEstates.length; i++) {
+
+          const element = res.data.results[i];
+
+          if (element.sponsors.length > 0) {
+            
+            for (let j = 0; j < element.sponsors.length; j++) {
+              const sponsoredElement = element.sponsors[j];
+              console.log(sponsoredElement);
+              let parsedElement = Date.parse(sponsoredElement.pivot.end_date);
+
+              if (parsedElement > Date.parse(this.now) && !this.sponsoredEstates.includes(element)) {
+                this.sponsoredEstates.push(element)
+              } else if (!this.unSponsoredEstates.filter( e => e.id === element.id)) {
+                this.unSponsoredEstates.push(element);
+              } else if (!this.sponsoredEstates.filter( e => e.id === element.id) ) {
+                this.sponsoredEstates.push(element);
+              } 
+              
+            }
+          } else {
+            this.unSponsoredEstates.push(element);
+          }
+          
         }
+    
+        } 
+        // else{
+        //   this.unSponsoredEstates = [];
+        //   this.sponsoredEstates = [];
+        // }
         this.initializeMap();
+        console.log(this.unSponsoredEstates);
+        console.log(this.sponsoredEstates);
         
       })
     },
@@ -217,8 +247,15 @@ export default {
     </div>
     <div class="content-wrapper">
 
-      <div class="cards-container ">
-         <EstateCard v-for="estate in allEstates" :estate="estate" ></EstateCard>
+      <MagicText></MagicText>
+      <div class="cards-container">
+                  <EstateCard v-for="estate in sponsoredEstates"
+                   :estate="estate" ></EstateCard>
+                </div>
+                
+                <h2>Tutti</h2> 
+                <div class="cards-container ">
+         <EstateCard v-for="estate in unSponsoredEstates" :estate="estate" ></EstateCard>
          <p v-show="allEstates.length === 0"> La ricerca non ha prodotto risultati</p>
      </div>
     </div>
@@ -509,7 +546,15 @@ export default {
   @include my-flex(row, start);
   flex-wrap: wrap;
   gap: 1em .5em;
+
+  margin-bottom: 2em;
      
  
- }
+  
+  
+}
+h2{
+  margin-left: 2em;
+  margin-bottom: 1em;
+}
 </style>

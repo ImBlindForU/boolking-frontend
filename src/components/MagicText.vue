@@ -118,7 +118,7 @@ h1 {
     color: #ff5a60;
     font-size: clamp(2em, 2vw, 4em);
     font-weight: 600;
-    margin: 0px;
+    margin: 0 1em;
     padding: 20px;
     text-align: center;
     font-size: 1.5rem;
