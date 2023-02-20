@@ -33,6 +33,14 @@ export default {
     //       console.error(error);
     //     });   
 
+    const firstTime = localStorage.getItem("first_time");
+    if (!firstTime) {
+
+      this.welcome = false
+      
+    }
+
+
   },
   methods: {
 
@@ -134,7 +142,6 @@ export default {
       <div class="cards-container">
         <EstateCard v-for="estate in sponsoredEstates" :estate="estate"></EstateCard>
       </div>
-      <hr>
       <h2>Tutti</h2>
 
       <div class="cards-container ">
@@ -164,6 +171,10 @@ export default {
   h1 {
     color: $red;
     text-align: center;
+  }
+
+  h2{
+    margin: 0em 2em 1em
   }
 
   .container {

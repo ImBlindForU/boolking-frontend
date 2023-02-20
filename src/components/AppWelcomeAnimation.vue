@@ -125,6 +125,7 @@ export default {
       // border: 1px solid $red;
       position: absolute;
       object-fit: cover;
+      border-radius: 10px;
       top: 50%;
       left: 75%;
       transform: translate(-50%, -50%)
