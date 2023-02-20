@@ -13,17 +13,21 @@ export default {
       city: "",
       services: [],
       street: "",
-      
-      distance: null
+      now: null,
+      distance: null,
+      sponsoredEstates: [],
+      unSponsoredEstates: [],
     };
   },
   created() {
 
-      this.getAllEstates()
+      this.now = new Date();
+      this.getAllEstates();
 
   },
   mounted(){
     
+
   },
   methods: {
 
@@ -51,8 +55,37 @@ export default {
 
 
       axios.get(this.store.backEndURL, option).then(res => {
-        console.log(res.data.results);
+        // console.log(res.data.results);
         this.store.allEstates = res.data.results;
+
+
+        for (let i = 0; i < res.data.results.length; i++) {
+
+          const element = res.data.results[i];
+
+          if (element.sponsors.length > 0) {
+            
+            for (let j = 0; j < element.sponsors.length; j++) {
+              const sponsoredElement = element.sponsors[j];
+              let parsedElement = Date.parse(sponsoredElement.pivot.end_date);
+
+              if (parsedElement > Date.parse(this.now)) {
+                this.sponsoredEstates.push(element)
+              } else if (!this.unSponsoredEstates.filter( e => e.id === element.id)) {
+                this.unSponsoredEstates.push(element);
+              } else if (!this.sponsoredEstates.filter( e => e.id === element.id)) {
+                this.sponsoredEstates.push(element);
+              } 
+              
+            }
+          } else {
+            this.unSponsoredEstates.push(element);
+          }
+          
+        }
+
+        console.log(this.unSponsoredEstates);
+        console.log(this.sponsoredEstates);
       })
     }
   },
@@ -72,10 +105,20 @@ export default {
             <input type="text" name="" id="" v-model="store.startingCity" placeholder="Ovunque" @keyup.enter="goToAdvanced()">
               <i @click="goToAdvanced()"  class="fa-solid fa-magnifying-glass"></i>
           </div> 
-
+          
+          
+                <div class="sponsored-container">
+                  <EstateCard v-for="estate in sponsoredEstates"
+                   :estate="estate" ></EstateCard>
+                </div>
                 <div class="cards-container ">
-                    <EstateCard v-for="estate in store.allEstates"
-                     :estate="estate" ></EstateCard>
+
+                          <EstateCard v-for="estate in unSponsoredEstates"
+                           :estate="estate" ></EstateCard>
+
+
+
+                    
                 </div>
     </div>
 
