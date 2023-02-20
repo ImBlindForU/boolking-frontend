@@ -229,6 +229,7 @@ export default {
     @include my-flex(row, start);
     flex-wrap: wrap;
    gap: 1em .5em;
+   margin-bottom: 2em;
       
        
    
