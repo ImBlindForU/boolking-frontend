@@ -69,11 +69,11 @@ export default {
               const sponsoredElement = element.sponsors[j];
               let parsedElement = Date.parse(sponsoredElement.pivot.end_date);
 
-              if (parsedElement > Date.parse(this.now)) {
+              if (parsedElement > Date.parse(this.now) && !this.sponsoredEstates.includes(element)) {
                 this.sponsoredEstates.push(element)
               } else if (!this.unSponsoredEstates.filter( e => e.id === element.id)) {
                 this.unSponsoredEstates.push(element);
-              } else if (!this.sponsoredEstates.filter( e => e.id === element.id)) {
+              } else if (!this.sponsoredEstates.filter( e => e.id === element.id) ) {
                 this.sponsoredEstates.push(element);
               } 
               
