@@ -260,7 +260,7 @@ header {
           width: 40vw;
           min-width: 150px;
           display: flex;
-          border-left: 5px solid $red;
+          border-left: 3px solid $red;
           flex-direction: column;
           background-color: rgba(255, 255, 255, 0.594);
           padding: 1.5em 1em;
