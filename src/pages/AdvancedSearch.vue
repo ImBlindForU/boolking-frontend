@@ -247,12 +247,12 @@ export default {
   </div>
   <div class="content-wrapper">
 
-    <MagicText></MagicText>
+    <MagicText v-if="sponsoredEstates.length > 0"></MagicText>
     <div class="cards-container">
       <EstateCard v-for="estate in sponsoredEstates" :estate="estate"></EstateCard>
     </div>
 
-    <h2>Tutti</h2>
+    <h2 v-if="unSponsoredEstates.length > 0" >Tutti</h2>
     <div class="cards-container ">
       <EstateCard v-for="estate in unSponsoredEstates" :estate="estate"></EstateCard>
       <p v-show="allEstates.length === 0"> La ricerca non ha prodotto risultati</p>
