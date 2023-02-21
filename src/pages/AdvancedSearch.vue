@@ -511,8 +511,8 @@ export default {
           left: 0px;
           bottom: 0px;
           right: 0px;
-          width: 8px;
-          height: 8px;
+          width: 10px;
+          height: 10px;
           border: solid $red;
           background-color: $red;
           border-radius: 50%;
