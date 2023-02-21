@@ -303,7 +303,7 @@ export default {
 /* Swiper */
 .swiper {
   margin-top: 1em;
-  padding-bottom: 2em;
+ 
 }
 
 figure {
@@ -380,7 +380,7 @@ figure {
 
 
 .estate-show-txt {
-  padding-top: 2rem;
+ 
   width: 50%;
 
   p {
@@ -416,7 +416,7 @@ figure {
 }
 
 .container-text {
-  margin-top: 2em;
+ 
   display: flex;
   justify-content: space-between;
 
