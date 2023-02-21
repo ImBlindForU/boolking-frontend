@@ -263,7 +263,7 @@ export default {
             <!-- <p class="error" v-if="errors.email">
                                           {{ errors.email[0] }}
                                         </p> -->
-            <textarea name="message" id="message" v-model="message" placeholder="Messaggio" cols="30"
+            <textarea name="message" required id="message" v-model="message" placeholder="Messaggio" cols="30"
               rows="10"></textarea>
             <!-- <p class="error" v-if="errors.message">
                                             {{ errors.message[0] }}
