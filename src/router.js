@@ -2,13 +2,13 @@ import { createRouter, createWebHistory } from "vue-router";
 import AppHome from "./pages/AppHome.vue";
 import AdvancedSearch from "./pages/AdvancedSearch.vue"
 import EstatePage from "./pages/EstatePage.vue"
+import NotFound from "./pages/NotFound.vue";
 
 
 // import About from "./pages/About.vue";
 // import ProjectsList from "./pages/ProjectsList.vue";
 // import SingleProject from "./pages/SingleProject.vue";
 // import ContactUs from "./pages/ContactUs.vue";
-// import NotFound from "./pages/NotFound.vue";
 
 
 
@@ -45,7 +45,7 @@ const router = createRouter({
         {
             path: "/:pathMatch(.*)*",
             name: "Not-Found",
-            // component: NotFound,
+            component: NotFound,
         }
     ]
 })
