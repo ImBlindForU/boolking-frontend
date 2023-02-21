@@ -36,7 +36,7 @@ export default {
   </h2>
 </div>
 </template>
-<style lang="css">
+<style lang="css" scoped>
     :root {
   --dark: rgb(20, 20, 20);
   
@@ -77,7 +77,7 @@ export default {
 }
 
 #left-side {
-  background-color: var(--left-color);
+  background-color: #ff5a60;
   width: 60%;
   z-index: 2;
 }
@@ -87,19 +87,19 @@ export default {
 }
 
 #left-side .fancy {
-  color: var(--dark);
+  color: black;
 }
 
 #right-side {
-  background-color: var(--right-color);
+  background-color: white;
 }
 
 #right-side .title {
-  color: var(--dark);
+  color: black;
 }
 
 #right-side .fancy {
-  color: var(--c1);
+  color: #ff5a60;
 }
 
 

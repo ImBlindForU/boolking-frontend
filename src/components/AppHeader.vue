@@ -176,6 +176,11 @@ header {
         max-width: 100%;
         object-fit: contain;
       }
+
+      span{
+        color: $red;
+        font-weight: 600;
+      }
     }
 
     nav {
@@ -249,7 +254,7 @@ header {
 
         ul {
           position: absolute;
-          top: 40px;
+          top: 30px;
           right: -10px;
           width: 40vw;
           min-width: 150px;
