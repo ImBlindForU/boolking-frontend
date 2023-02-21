@@ -194,6 +194,7 @@ export default {
       timeline
         .from(".search", { opacity: 0, ease: "ease.Out" })
         .from("input", { opacity: 0, ease: "ease.Out", stagger: .1 })
+        .from(".km", { opacity: 0, ease: "ease.Out", stagger: .1 })
         .from(".our-btn-header", { opacity: 0, ease: "ease.Out" })
         .from("#tom-map", { opacity: 0, ease: "power2.in" })
         .from(".cards-container", { opacity: 0 })
@@ -224,7 +225,7 @@ export default {
 
           <div class="slidecontainer">
             <input type="range" name="distance" v-model="distance" min="0" max="30" class="slider">
-            <span>{{ distance }} km</span>
+            <span class="km">{{ distance }} km</span>
           </div>
 
           <!-- <input type="number" name="distance" v-model="distance" placeholder="Distanza *" required > -->
