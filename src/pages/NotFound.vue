@@ -24,38 +24,24 @@ export default {
 </script>
 <template>
    <div id="left-side" class="side">
-        <h2 class="title">
-            404 - Not
+     <h2 class="title">
+          4<i class="fa-brands fa-airbnb"></i>4 - Not
             <span class="fancy">Found</span>      
         </h2>
         </div>
         <div id="right-side" class="side">
-        <h2 class="title">
-            404 - Not
+          <h2 class="title">
+          4<i class=" fa-brands fa-airbnb"></i>4 - Not
             <span class="fancy">Found</span>     
   </h2>
 </div>
 </template>
 <style lang="css" scoped>
-    :root {
-  --dark: rgb(20, 20, 20);
-  
-  
-  --c1: #ff5a60;
-  --c2: rgb(255, 255, 255);
-  
-  --left-color: var(--c1);
-  --right-color: var(--c2);
-}
 
-/* body {  
-  background-color: var(--dark);
-  margin: 0px;
-} */
 
 .side {
   display: grid;
-  height: 100vh;
+  height: 90vh;
   overflow: hidden;
   place-items: center;
   position: absolute;
