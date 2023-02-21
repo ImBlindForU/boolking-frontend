@@ -28,10 +28,14 @@ export default {
   },
   mounted() {
      
-
-    const firstTime = localStorage.getItem("first_time");
-    console.log(firstTime);
-    if (!firstTime) {
+    if(localStorage.getItem('first_time')){
+      const firstTime = localStorage.getItem("first_time");
+      console.log(firstTime);
+      if (!firstTime) {
+        this.welcome = false
+      }
+    } else {
+      localStorage.setItem('first_time', 1)
       this.welcome = false
     }
 
