@@ -27,17 +27,12 @@ export default {
 
   },
   mounted() {
-    // this.getClientIp().then(ip => {
-    //       this.store.ipAddress = ip;
-    //     }).catch(error => {
-    //       console.error(error);
-    //     });   
+     
 
     const firstTime = localStorage.getItem("first_time");
+    console.log(firstTime);
     if (!firstTime) {
-
       this.welcome = false
-
     }
 
 
