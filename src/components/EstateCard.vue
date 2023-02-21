@@ -50,7 +50,7 @@ export default {
 
 <template>
   <div v-if="estate.is_visible" class="estate-card ">
-    <div v-show="estate.price" class="price">€{{ estate.price }}</div>
+    <div v-show="estate.price" class="price">€{{ Math.trunc(estate.price) }}</div>
     <div class="estate-img">
       <img :src="imgPath" alt="" srcset="">
       <img v-show="estate.images" v-for="img in estate.images" :src="`http://127.0.0.1:8000/storage/${img.path}`"
@@ -118,7 +118,7 @@ export default {
   .price {
     position: absolute;
     top: 0;
-    right: 0;
+    right: -1px;
     width: fit-content;
     background-color: #ff5a60a7;
     text-align: center;
