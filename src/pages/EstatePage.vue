@@ -18,6 +18,7 @@ export default {
       message: "",
       processing: false,
       loader: false,
+      sent: false,
     };
   },
   created() {
@@ -156,6 +157,7 @@ export default {
 
     sendForm() {
       this.processing = true;
+      this.sent = false;
 
       const data = {
         name: this.name,
@@ -179,7 +181,7 @@ export default {
           this.processing = false;
         }, 1000);
 
-
+        this.sent = true;
 
       })
     },
@@ -276,6 +278,7 @@ export default {
               <span class="loading-animate"></span>
             </button>
           </form>
+          <p  v-show="sent" >Messaggio inviato</p>
         </div>
       </div>
     </div>
@@ -456,6 +459,12 @@ figure {
     padding: 1em;
     background-color: $greybg;
     transition: all 200ms;
+
+    p{
+      color: green;
+      text-align: center;
+      margin: .3em auto;
+    }
 
     &:hover {
       box-shadow: 0px 5px 5px #827b7b;
