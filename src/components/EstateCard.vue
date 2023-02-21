@@ -49,7 +49,8 @@ export default {
 </script>
 
 <template>
-  <div v-if="estate.is_visible" class="estate-card ">
+  <router-link :to="{ name: 'estate-page', params: { slug: estate.slug } }" v-if="estate.is_visible" class="estate-card ">
+  <div >
     <div v-show="estate.price" class="price">€{{ Math.trunc(estate.price) }}</div>
     <div class="estate-img">
       <img :src="imgPath" alt="" srcset="">
@@ -59,14 +60,15 @@ export default {
     </div>
     <div class="estate-txt">
       <div>
-        <h5>{{ estate.title }}</h5>
-        <p>Tipologia: {{ estate.type }}</p>
-        <p>&#x33A1;: {{ estate.mq }}</p>
+        <h5>{{ estate.address.city }}, <span>{{ estate.address.country }}</span></h5>
+        <p>{{ estate.title }}</p>
+        <!-- <p>{{ estate.type }}</p> -->
+        <!-- <p>{{ estate.mq }}&#x33A1;</p> -->
         <!-- <p>Prezzo: {{ estate.price }}</p> -->
       </div>
-      <router-link :to="{ name: 'estate-page', params: { slug: estate.slug } }" class="our-btn">Visualizza</router-link>
     </div>
   </div>
+</router-link>
 </template>
 
 <style lang="scss" scoped>
@@ -104,8 +106,8 @@ export default {
 
 
   opacity: 0;
-  height: 350px;
-  border: 1px solid #c1baba;
+  height: 280px;
+  // border: 1px solid #c1baba;
   border-radius: 15px;
   overflow: hidden;
   width: calc(100% / 1 - .25em) !important;
@@ -172,7 +174,12 @@ export default {
 
     h5 {
       font-size: 1rem;
+      font-weight: 500;
       margin-bottom: .5em !important;
+
+      span{
+        font-weight: 300;
+      }
 
     }
 
