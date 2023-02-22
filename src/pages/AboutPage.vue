@@ -70,7 +70,7 @@ export default {
     <div class="container">
         <h1>About Us</h1>
         <p>Boolking nasce come progetto finale del #team7 della classe #73 di Boolean. L'intento era quello di sviluppare una piattaforma che permettesse agli utenti di registrarsi, inserire, sponsorizzare e mettere in mostra le loro proprietà, permettendo agli utenti visitatori di navigare, cercare e di contattare i proprietari. Il progetto si articola in due macro sezioni, Front-End e Back-End, ed è stato realizzato attraverso l'uso di tecnologie apprese durante di sei mesi di corso. Il nome è nato il primissimo giorno da un'intuizione di Samuele che ha anche dato vita all'animazione del pagamento, la veste grafica è in piccola parte uno spunto preso da AirBnB e per la maggior parte creazione dell’estro di Valerio, la ricerca per servizi non esisterebbe senza Fabrizio, mentre Alessio si è occupato di tener testa alla rigida "impalcatura" delle query di Laravel. Il team ha legato e lavorato assieme dall’inizio alla fine, tutti hanno contribuito ad aggiungere funzionalità e a risolvere problemi, tutto ciò che vedete è frutto di una collaborazione totale e questo sito non potrebbe esistere se anche solo uno dei membri del team non fosse stato presente.<br><br>
-          <a class="our-btn" href="https://www.patreon.com/Boolking/guys">Fund us</a> 
+          <a class="our-btn" href="https://www.patreon.com/Boolking/guys">Buy us a coffee</a> 
           <br>
           <br> Di seguito potete trovare il link ai profili GitHub di ogni membro:</p>
         <div id="wrapper" data-configuration="1" data-roundness="5"> 
