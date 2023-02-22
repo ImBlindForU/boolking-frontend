@@ -13,6 +13,7 @@ export default {
         animate() {
           const timeline = gsap.timeline({ defaults: { duration: .5, } });
           timeline
+            .from("p", { opacity: 0, x: "-200%", ease: "ease.Out" })
             .from("#first", { opacity: 0, x: "-200%", ease: "ease.Out" })
             .from("#second", { opacity: 0, x: "+200%", ease: "ease.Out", stagger: .1 })
             .from("#third", { opacity: 0, x: "+200%", ease: "ease.Out", stagger: .1 })
@@ -84,14 +85,16 @@ export default {
             <img :src="getImgPath('samuele', 'jpeg')" alt="" srcset="">
         </a>
       </div></div>
-      <div  id="fourth" class="shape"><div class="img">
+      <div  id="fourth" class="shape">
+        <div class="img">
         <a href="https://github.com/reistence">
             <img :src="getImgPath('valerio', 'jpeg')" alt="" srcset="">
         </a>
-
-      </div></div>
+      </div>
+    </div>
      
     </div>
+    <div class="space"></div>
 
     </div>
 </template>
@@ -120,12 +123,16 @@ p{
   margin: 0 auto;
 }
 
+.space{
+  padding: 3em;
+}
 
 #wrapper {
   aspect-ratio: 1.618;
   width: 90vmin;
   position: relative;
   margin-top: 1em;
+  padding-bottom: 2em;
 }
 
 #wrapper > .shape {
