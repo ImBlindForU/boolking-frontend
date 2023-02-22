@@ -406,9 +406,16 @@ figure {
 
     li {
       margin-left: .5em !important;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-start;
 
       span {
         margin-right: .3em;
+        font-size: .4rem;
+       
+        
       }
     }
 
