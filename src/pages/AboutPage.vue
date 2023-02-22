@@ -113,6 +113,9 @@ export default {
 h1{
   margin: .5em 0;
 }
+p{
+  text-align: justify;
+}
 
 
 #wrapper {
