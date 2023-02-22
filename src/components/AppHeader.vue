@@ -88,7 +88,7 @@ export default {
             <a href="http://127.0.0.1:8000/login">Login</a>
           </li>
           <li class="external">
-            <a href="http://127.0.0.1:8000/register">Registrati</a>
+            <a href="http://127.0.0.1:8000/register">Area Riservata</a>
           </li>
         </ul>
       </nav>
@@ -103,7 +103,7 @@ export default {
             <a href="http://127.0.0.1:8000/login">Login</a>
           </li>
           <li class="external">
-            <a href="http://127.0.0.1:8000/register">Registrati</a>
+            <a href="http://127.0.0.1:8000/register">Area Riservata</a>
           </li>
         </ul>
       </div>
