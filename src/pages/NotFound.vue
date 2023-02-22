@@ -41,7 +41,7 @@ export default {
 
 .side {
   display: grid;
-  height: 90vh;
+  height: 95vh;
   overflow: hidden;
   place-items: center;
   position: absolute;
