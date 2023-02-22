@@ -107,8 +107,8 @@ export default {
   @include my-container;
   height: 80vh;
 //   width: 100vw;
-  display: grid;
-  place-items: center;
+  // display: grid;
+  // place-items: center;
   margin: 0px auto 2em;
 //   overflow: hidden;
 }
@@ -117,6 +117,7 @@ h1{
   margin: .5em 0;
   color: $red;
   font-size: 2.5rem;
+  text-align: center;
 }
 p{
   text-align: justify;
