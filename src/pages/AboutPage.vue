@@ -57,7 +57,7 @@ export default {
 <template>
     <div class="container">
         <h1>About Us</h1>
-        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Minima harum architecto et animi omnis praesentium quis tenetur quasi facere labore earum impedit saepe, doloribus, reiciendis accusamus incidunt dolorem! Ut tempore minus adipisci natus dicta vitae rem ratione! Provident facere facilis itaque delectus sed illum, cupiditate perspiciatis! Eos tempore recusandae esse perferendis aut expedita incidunt autem molestiae alias possimus tempora itaque ipsum unde minus reprehenderit, repellat voluptate, quas ex voluptas commodi similique rem, eum sit aspernatur. Id accusamus quae vero, ducimus totam dicta! <br> I responsabili sono:</p>
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Minima harum architecto et animi omnis praesentium quis tenetur quasi facere labore earum impedit saepe, doloribus, reiciendis accusamus incidunt dolorem! Ut tempore minus adipisci natus dicta vitae rem ratione! Provident facere facilis itaque delectus sed illum, cupiditate perspiciatis! Eos tempore recusandae esse perferendis aut expedita incidunt autem molestiae alias possimus tempora itaque ipsum unde minus reprehenderit, repellat voluptate, quas ex voluptas commodi similique rem, eum sit aspernatur. Id accusamus quae vero, ducimus totam dicta! <br><br> I responsabili sono:</p>
         <div id="wrapper" data-configuration="1" data-roundness="5"> 
       <div class="shape"><div class="img">
         <a href="https://github.com/BetterCallAle">
