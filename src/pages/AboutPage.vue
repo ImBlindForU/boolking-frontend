@@ -13,6 +13,7 @@ export default {
         animate() {
           const timeline = gsap.timeline({ defaults: { duration: .5, } });
           timeline
+            .from("h1", { opacity: 0, y: "-200%", ease: "ease.Out" })
             .from("p", { opacity: 0, x: "-200%", ease: "ease.Out" })
             .from("#first", { opacity: 0, x: "-200%", ease: "ease.Out" })
             .from("#second", { opacity: 0, x: "+200%", ease: "ease.Out", stagger: .1 })
