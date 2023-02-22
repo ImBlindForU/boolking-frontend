@@ -110,6 +110,10 @@ export default {
 //   overflow: hidden;
 }
 
+h1{
+  margin: .5em 0;
+}
+
 
 #wrapper {
   aspect-ratio: 1.618;
