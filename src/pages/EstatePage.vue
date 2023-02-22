@@ -276,7 +276,7 @@ export default {
             <button class="btn" :class="processing ? 'loading' : ''">
               <i class='fa-solid fa-paper-plane'></i>
               <span class="text">
-                Send Message
+                Invia Messaggio
               </span>
               <span class="loading-animate"></span>
             </button>
