@@ -9,10 +9,20 @@ export default {
     methods: {
         getImgPath(imgName, format){
             return new URL(`../assets/us/${imgName}.${format}`, import.meta.url).href
-        }
+        },
+        animate() {
+          const timeline = gsap.timeline({ defaults: { duration: .5, } });
+          timeline
+            .from("#first", { opacity: 0, x: "-200%", ease: "ease.Out" })
+            .from("#second", { opacity: 0, x: "+200%", ease: "ease.Out", stagger: .1 })
+            .from("#third", { opacity: 0, x: "+200%", ease: "ease.Out", stagger: .1 })
+            .from("#fourth", { opacity: 0, x: "-200%", ease: "ease.Out" })
+         }
     },
     mounted(){
         const wrapper = document.getElementById("wrapper");
+
+        this.animate();
 
                 const rand = (min, max) => Math.floor(Math.random() * (max - min + 1) + min);
 
@@ -57,24 +67,24 @@ export default {
 <template>
     <div class="container">
         <h1>About Us</h1>
-        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Minima harum architecto et animi omnis praesentium quis tenetur quasi facere labore earum impedit saepe, doloribus, reiciendis accusamus incidunt dolorem! Ut tempore minus adipisci natus dicta vitae rem ratione! Provident facere facilis itaque delectus sed illum, cupiditate perspiciatis! Eos tempore recusandae esse perferendis aut expedita incidunt autem molestiae alias possimus tempora itaque ipsum unde minus reprehenderit, repellat voluptate, quas ex voluptas commodi similique rem, eum sit aspernatur. Id accusamus quae vero, ducimus totam dicta! <br><br> I responsabili sono:</p>
+        <p>Boolking nasce come progetto finale del #team7 della classe #73 di Boolean. L'intento era quello di sviluppare una piattaforma, in chiaro stile Airbnb, che permettesse agli utenti di registrarsi, inserire, sponsorizzare e mettere in mostra le loro proprietà, permettendo agli utenti visitatori di navigare, cercare la soluzione più adatta alle loro esigenze e di contattare i proprietari attraverso un canale di comunicazione privilegiato. Il progetto si articola in due macro sezioni, Front-End e Back-End, ed è stato realizzato attraverso l'uso di tecnologie apprese durante di sei mesi di corso.<br><br> I componenti del team ed i responsabili del progretto sono:</p>
         <div id="wrapper" data-configuration="1" data-roundness="5"> 
-      <div class="shape"><div class="img">
+      <div  id="first" class="shape"><div class="img">
         <a href="https://github.com/BetterCallAle">
             <img :src="getImgPath('alessio', 'png')" alt="" srcset="">
         </a>
       </div> </div>
-      <div class="shape"><div class="img">
+      <div id="second"  class="shape"><div class="img">
         <a href="https://github.com/FabrizioMisseri">
             <img :src="getImgPath('fabrizio', 'jpg')" alt="" srcset="">
         </a>
       </div></div>
-      <div class="shape"><div class="img">
+      <div id="third" class="shape"><div class="img">
         <a href="https://github.com/ImBlindForU">
             <img :src="getImgPath('samuele', 'jpeg')" alt="" srcset="">
         </a>
       </div></div>
-      <div class="shape"><div class="img">
+      <div  id="fourth" class="shape"><div class="img">
         <a href="https://github.com/reistence">
             <img :src="getImgPath('valerio', 'jpeg')" alt="" srcset="">
         </a>
@@ -235,10 +245,10 @@ export default {
   width: 44%;
 }
 #wrapper[data-configuration="2"] > .shape:nth-child(1) {
-  left: 0%;
+  left: 25%;
   top: 0%;
   height: 25%;
-  width: 100%;
+  width: 50%;
   margin: 0 auto;
   flex-direction: row;
   justify-content: center;
@@ -254,10 +264,10 @@ export default {
 }
 
 #wrapper[data-configuration="2"] > .shape:nth-child(2) {
-  left: 0%;
+  left: 25%;
   top: 25%;
   height: 25%;
-  width: 100%;
+  width: 50%;
   margin: 0 auto;
   flex-direction: row;
   justify-content: center;
@@ -273,10 +283,10 @@ export default {
 }
 
 #wrapper[data-configuration="2"] > .shape:nth-child(3) {
-  left: 0%;
+  left: 25%;
   top: 50%;
   height: 25%;
-  width: 100%;
+  width: 50%;
   margin: 0 auto;
   flex-direction: row;
   justify-content: center;
@@ -292,10 +302,10 @@ export default {
 }
 
 #wrapper[data-configuration="2"] > .shape:nth-child(4) {
-  left: 0%;
+  left: 25%;
   top: 75%;
   height: 25%;
-  width: 100%;
+  width: 50%;
   margin: 0 auto;
   flex-direction: row;
   justify-content: center;
