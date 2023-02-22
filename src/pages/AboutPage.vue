@@ -112,9 +112,12 @@ export default {
 
 h1{
   margin: .5em 0;
+  color: $red;
+  font-size: 2.5rem;
 }
 p{
   text-align: justify;
+  margin: 0 auto;
 }
 
 
