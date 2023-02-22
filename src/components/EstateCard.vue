@@ -169,7 +169,7 @@ export default {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: calc(100% - 200px);
+    height: calc(100% - 180px);
 
 
     h5 {
