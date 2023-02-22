@@ -240,6 +240,9 @@ export default {
         <p> <span>Tipologia:</span> {{ estate.type }}</p>
         <p> <span>Metri Quadri:</span> {{ estate.mq }}&#x33A1;</p>
         <p v-if="estate.price"><span>Prezzo:</span> €{{ estate.price }} a notte</p>
+        <p v-if="estate.room_number"><span>Stanze:</span> {{ estate.room_number }}</p>
+        <p v-if="estate.bed_number"><span>Camere da letto:</span> {{ estate.bed_number }}</p>
+        <p v-if="estate.bathroom_number"><span>Bagni:</span> {{ estate.bathroom_number }}</p>
         <p v-if="estate.description"><span>Descrizione:</span> {{ estate.description }}</p>
         <div v-if="loader">
           <div v-if="estate.services.length > 0">
