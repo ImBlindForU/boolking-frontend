@@ -130,9 +130,9 @@ p{
 
 #wrapper {
   aspect-ratio: 1.618;
-  width: 90vmin;
+  width: 70vmax;
   position: relative;
-  margin-top: 1em;
+  margin: 1em auto;
   padding-bottom: 2em;
 }
 
